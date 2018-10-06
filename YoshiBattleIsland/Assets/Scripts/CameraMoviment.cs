@@ -16,6 +16,7 @@ public class CameraMoviment : MonoBehaviour {
         if (playerTransform != null)
         {
             transform.position = Vector3.Lerp(transform.position, playerTransform.position + new Vector3(direction, high, depth), speed);
+            Debug.Log(transform.position);
         }
     }
 

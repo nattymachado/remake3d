@@ -8,6 +8,8 @@ public class Scenario : MonoBehaviour {
     public GameObject rock;
     public GameObject yoshi;
     public GameObject babyMario;
+    public List<GameObject> PlayerSpawnPoints;
+    public List<GameObject> MarioSpawnPoints;
 
     // Use this for initialization
     void Awake () {
@@ -20,9 +22,23 @@ public class Scenario : MonoBehaviour {
             }
         }
 
-        //Instantiate(yoshi, new Vector3(250f, 0, 250f), Quaternion.identity);
+        SpawnPlayers();
 
-        Instantiate(babyMario, new Vector3(Random.Range(10f, 100f), 0, Random.Range(10f, 100f)), Quaternion.identity);
+        SpawnMario();
 
+    }
+
+    void SpawnPlayers()
+    {
+        GameObject nest = this.PlayerSpawnPoints[Random.Range(0, this.PlayerSpawnPoints.Count)];
+        Debug.Log(nest);
+        Debug.Log(nest.transform.position);
+        GameObject newYoshi = Instantiate(yoshi, nest.transform.position, Quaternion.identity);
+        nest.GetComponent<NestBehaviour>().Owner = newYoshi.GetInstanceID();
+    }
+
+    void SpawnMario()
+    {
+        Instantiate(babyMario, this.MarioSpawnPoints[Random.Range(0, this.MarioSpawnPoints.Count)].transform.position, Quaternion.identity);
     }
 }

@@ -34,6 +34,8 @@ public class YoshiMoviment : MonoBehaviour {
     {
         if (characterController.isGrounded)
         {
+
+            Debug.Log(moveDirection);
             // We are grounded, so recalculate
             // move direction directly from axes
 
@@ -44,6 +46,9 @@ public class YoshiMoviment : MonoBehaviour {
             {
                 moveDirection.y = jumpSpeed;
             }
+
+            if (moveDirection != Vector3.zero)
+                transform.rotation = Quaternion.LookRotation(moveDirection);
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below

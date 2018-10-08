@@ -16,6 +16,14 @@ public class TougueController : MonoBehaviour {
 
         
        Debug.Log("Peguei algo");
+       ShyGuyController controller = other.GetComponent<ShyGuyController>();
+       if (controller != null && controller.transform.parent != transform)
+        {
+            controller.TransformOnEgg();
+            //controller.transform.parent = transform;
+            _tougleAnimator.SetBool("IsWithEgg", true);
+            Destroy(controller.gameObject, 1.0f);
+        }
         
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TougueController : MonoBehaviour {
 
     private Animator _tougleAnimator;
+    private bool _isFiring = false;
 
     public void Start()
     {
@@ -14,24 +15,37 @@ public class TougueController : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        
-       Debug.Log("Peguei algo");
        ShyGuyController controller = other.GetComponent<ShyGuyController>();
-       if (controller != null && controller.transform.parent != transform)
+       if (controller != null)
         {
-            controller.TransformOnEgg();
-            //controller.transform.parent = transform;
             _tougleAnimator.SetBool("IsWithEgg", true);
-            Destroy(controller.gameObject, 1.0f);
+            controller.TransformOnEgg();
+            controller.gameObject.SetActive(false);
+            Destroy(controller.gameObject, 0.2f);
+            transform.parent.parent.GetComponent<PlayerController>().AddEgg();
+            
+            
+            
         }
         
     }
 
+    IEnumerator WaitForAnimation(float time)
+    {
+        //print(Time.time);
+        yield return new WaitForSeconds(time);
+        _tougleAnimator.SetBool("IsWithEgg", false);
+        _isFiring = false;
+ 
+    }
+
     private void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !_isFiring)
         {
+            _isFiring = true;
             _tougleAnimator.SetTrigger("MovimentTougle");
+            StartCoroutine(WaitForAnimation(1f));
         }
     }
 

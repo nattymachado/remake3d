@@ -19,7 +19,7 @@ public class ShyGuyController : MonoBehaviour {
     public void TransformOnEgg()
     {
         Debug.Log("I will be an egg now");
-        egg.SetActive(true);
-        body.SetActive(false);
+        //egg.SetActive(true);
+        //body.SetActive(false);
     }
 }

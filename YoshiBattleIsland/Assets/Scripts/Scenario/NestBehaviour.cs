@@ -36,7 +36,7 @@ public class NestBehaviour : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
 
-        if (other.transform.parent.gameObject.GetInstanceID() == this.ownerInstanceId)
+        if (other.transform && other.transform.parent && other.transform.parent.gameObject.GetInstanceID() == this.ownerInstanceId)
         {
             _isOwnerAlreadyExit = true;
         }

@@ -2587,7 +2587,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1927286866958514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 1fce249062dcd804c9a50a1497439c0c, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 1
@@ -2609,8 +2609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 1585960919516624}
-  egg: {fileID: 1927286866958514}
+  body: {fileID: 0}
+  egg: {fileID: 0}
 --- !u!137 &137121431021211884
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

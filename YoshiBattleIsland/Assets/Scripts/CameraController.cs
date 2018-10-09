@@ -10,11 +10,9 @@ public class CameraController : MonoBehaviour {
     public float z = 2;
     public float x = 2;
 
-    private Vector3 offset;
 
     void Start()
     {
-        offset = transform.position - player.transform.position;
         transform.LookAt(player.transform.position);
     }
 

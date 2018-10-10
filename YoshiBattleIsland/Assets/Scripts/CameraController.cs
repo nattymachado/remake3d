@@ -18,8 +18,10 @@ public class CameraController : MonoBehaviour {
 
     void LateUpdate()
     {
+        float h = transform.position.y;
         transform.position = Vector3.Lerp(transform.position, player.transform.position - 10 * player.transform.forward + new Vector3(x, y, z), speed);
-        transform.LookAt(player.transform.position);
+        transform.position = new Vector3(transform.position.x, h, transform.position.z);
+        transform.LookAt(new Vector3(player.transform.position.x, h, player.transform.position.z));
     }
 
 }

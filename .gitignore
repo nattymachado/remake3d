@@ -1,1 +1,5 @@
 *.lock
+*/Library/*
+YoshiBattleIsland/obj/*
+*/.vs/*
+*/Temp/*

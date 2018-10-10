@@ -8,16 +8,16 @@ public class CameraMoviment : MonoBehaviour {
     public int depth = -8;
     public int high = 8;
     public int direction = -1;
-    public float speed = 0.1f;
+    public float speed = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        if (playerTransform != null)
+        /*if (playerTransform != null)
         {
-            transform.position = Vector3.Lerp(transform.position, playerTransform.position + new Vector3(direction, high, depth), speed);
+            transform.position = Vector3.Lerp(transform.position,  new Vector3(playerTransform.position.x + direction, 0, playerTransform.position.z + depth), speed);
             Debug.Log(transform.position);
-        }
+        }*/
     }
 
     public void setTarget(Transform target)

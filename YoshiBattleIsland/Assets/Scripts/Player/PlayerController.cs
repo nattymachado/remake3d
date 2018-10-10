@@ -8,10 +8,17 @@ public class PlayerController : MonoBehaviour {
     public float SpeedRotation;
     public float JumpSpeed;
     public GameObject EggPrefab;
+    public GameObject TargetPrefab;
     public Transform EggSpawn;
+    public Camera playerCamera;
+    public float collisionTime = 0;
+
+    private GameObject _activateTarget = null;
+
 
     private bool _isWithMario = false;
-    private int eggsQuantity = 0;
+    private int eggsQuantity = 50;
+
 
     public bool IsWithMario
     {
@@ -47,45 +54,84 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedRotation;
         var z = Input.GetAxis("Vertical") * Time.deltaTime * Speed;
         float y = 0;
 
+
         if (transform.position.y < JumpSpeed)
-        {
-            if (Input.GetButton("Jump"))
+         {
+            if (Input.GetButtonDown("Jump"))
             {
+                Debug.Log("Jumping");
                 y = JumpSpeed;
             }
         }
         
-
-
+        
         transform.Rotate(0, x, 0);
         transform.Translate(0, y, z);
-        if (Input.GetButtonUp("Fire2") && this.eggsQuantity > 0)
+        if (_activateTarget)
         {
-            Debug.Log(Input.mousePosition);
+            var mousePos = Input.mousePosition;
+            mousePos.z = 20.0f;
+            if (mousePos.y < 116f)
+            {
+                mousePos.y = 116f;
+            }
+            Debug.Log(mousePos);
+            Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
+            Vector3 direction = (objectPos - transform.position).normalized;
+            _activateTarget.transform.position = transform.position + direction * 5;
         }
-        if (Input.GetButtonUp("Fire2") && this.eggsQuantity > 0)
+        
+        if (Input.GetButtonDown("Fire2"))
         {
-            this.RemoveEgg();
-            Fire();
+            if (_activateTarget == null)
+            {
+                var mousePos = Input.mousePosition;
+                mousePos.z = 20.0f;
+                Debug.Log(mousePos);
+                Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
+                Vector3 direction = (objectPos - transform.position).normalized;
+                _activateTarget = (GameObject)Instantiate(
+                    this.TargetPrefab,
+                    transform.position + direction * 5, transform.rotation);
+            }
+            
+        }
+        if (Input.GetButtonUp("Fire2"))
+        {
+
+            if (eggsQuantity > 0)
+            {
+                this.RemoveEgg();
+                Fire();
+            } else
+            {
+                Destroy(_activateTarget);
+            }
         }
     }
 
     private void Fire()
     {
-        GameObject egg = (GameObject)Instantiate(
+        if (_activateTarget)
+        {
+            GameObject egg = (GameObject)Instantiate(
             this.EggPrefab,
             this.EggSpawn.position,
-            this. EggSpawn.rotation);
-
-        // Add velocity to the bullet
-        egg.GetComponent<Rigidbody>().velocity = egg.transform.forward * 6;
-
-        // Destroy the bullet after 2 seconds
-        Destroy(egg, 2.0f);
+            this.EggSpawn.rotation);
+            egg.transform.LookAt(_activateTarget.transform.position);
+            egg.GetComponent<Rigidbody>().AddForce(egg.transform.forward * 1000);
+            // Add velocity to the bullet
+            egg.GetComponent<Rigidbody>().velocity = egg.transform.forward * 6;
+            Destroy(_activateTarget);
+            // Destroy the bullet after 2 seconds
+            Destroy(egg, 5.0f);
+        }
+        
     }
 
 

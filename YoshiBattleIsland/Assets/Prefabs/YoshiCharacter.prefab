@@ -2945,7 +2945,7 @@ GameObject:
   m_Layer: 0
   m_Name: EggSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6362,7 +6362,10 @@ MonoBehaviour:
   SpeedRotation: 50
   JumpSpeed: 2
   EggPrefab: {fileID: 1838751407426652, guid: a424222a4638bf7459ff5aa19257dc80, type: 2}
+  TargetPrefab: {fileID: 1694362914405468, guid: 23886b128713b5c41900e6652db4712b,
+    type: 2}
   EggSpawn: {fileID: 4119131994325514}
+  playerCamera: {fileID: 20740200724585926}
 --- !u!114 &114306549468581682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6376,9 +6379,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1713202282696584}
   speed: 0.5
-  y: 7
-  z: 3
-  x: 7
+  y: 5
+  z: 0
+  x: 0
 --- !u!114 &114959432523978930
 MonoBehaviour:
   m_ObjectHideFlags: 1

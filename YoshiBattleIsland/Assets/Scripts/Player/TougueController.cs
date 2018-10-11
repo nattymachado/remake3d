@@ -18,14 +18,15 @@ public class TougueController : MonoBehaviour {
        ShyGuyController controller = other.GetComponent<ShyGuyController>();
        if (controller != null)
         {
-            _tougleAnimator.SetBool("IsWithEgg", true);
-            controller.TransformOnEgg();
-            controller.gameObject.SetActive(false);
-            Destroy(controller.gameObject, 0.2f);
-            transform.parent.parent.GetComponent<PlayerController>().AddEgg();
-            
-            
-            
+            Debug.Log(transform.localScale.z);
+            if (transform.localScale.z > 0.1)
+            {
+                _tougleAnimator.SetBool("IsWithEgg", true);
+                controller.TransformOnEgg();
+                controller.gameObject.SetActive(false);
+                Destroy(controller.gameObject, 0.2f);
+                transform.parent.parent.GetComponent<PlayerController>().AddEgg();
+            }
         }
         
     }

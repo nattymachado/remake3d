@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
     public Transform EggSpawn;
     public Camera playerCamera;
     public float collisionTime = 0;
+    private int targetDistance = 5;
+    private LineRenderer lineRenderer;
 
     private GameObject _activateTarget = null;
 
@@ -50,7 +52,31 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+        lineRenderer = transform.GetComponent<LineRenderer>();
+        InvokeRepeating("RefreshTargetDistance", 0f, 2f);
     }
+
+    void DrawTargetLine(Vector3 targetPosition)
+    {
+        lineRenderer.enabled = true;
+        lineRenderer.materials[0].mainTextureScale = new Vector3(2, 1, 1);
+        lineRenderer.SetPosition(0, new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        lineRenderer.SetPosition(1, new Vector3(targetPosition.x, targetPosition.y, targetPosition.z));
+    }
+
+    void UpdateTargetPosition(int distance)
+    {
+        var mousePos = Input.mousePosition;
+        mousePos.z = 20.0f;
+        if (mousePos.y < 116f)
+        {
+            mousePos.y = 116f;
+        }
+        Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
+        Vector3 direction = (objectPos - transform.position).normalized;
+        _activateTarget.transform.position = transform.position + direction * distance;
+    }
+
 
     void Update()
     {
@@ -72,27 +98,20 @@ public class PlayerController : MonoBehaviour {
         
         transform.Rotate(0, x, 0);
         transform.Translate(0, y, z);
+
+
         if (_activateTarget)
         {
-            var mousePos = Input.mousePosition;
-            mousePos.z = 20.0f;
-            if (mousePos.y < 116f)
-            {
-                mousePos.y = 116f;
-            }
-            Debug.Log(mousePos);
-            Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
-            Vector3 direction = (objectPos - transform.position).normalized;
-            _activateTarget.transform.position = transform.position + direction * 5;
+            UpdateTargetPosition(this.targetDistance);
         }
         
         if (Input.GetButtonDown("Fire2"))
         {
             if (_activateTarget == null)
             {
+                this.targetDistance = 5;
                 var mousePos = Input.mousePosition;
                 mousePos.z = 20.0f;
-                Debug.Log(mousePos);
                 Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
                 Vector3 direction = (objectPos - transform.position).normalized;
                 _activateTarget = (GameObject)Instantiate(
@@ -111,8 +130,49 @@ public class PlayerController : MonoBehaviour {
             } else
             {
                 Destroy(_activateTarget);
+                lineRenderer.enabled = false;
             }
         }
+    }
+
+    // Fixed update is used for physics
+    void FixedUpdate()
+    {
+        bool hitSomething = false;
+
+        if (lineRenderer)
+        {
+            RaycastHit hitInfo;
+
+            if (_activateTarget)
+            {
+                if (Physics.Linecast(transform.position, _activateTarget.transform.position, out hitInfo))
+                {
+
+                    if (hitInfo.collider.gameObject.GetComponent<ShyGuyController>() != null)
+                    {
+                        this.targetDistance -= 1;
+                        Debug.Log("Pagou um shygay");
+                    }
+                    hitSomething = true;
+
+
+                }
+
+
+                if (hitSomething)
+                {
+                    Debug.Log("Tá pegando");
+                }
+                
+            }
+
+        }
+    }
+
+    private void RefreshTargetDistance()
+    {
+        this.targetDistance = 5;
     }
 
     private void Fire()
@@ -128,6 +188,7 @@ public class PlayerController : MonoBehaviour {
             // Add velocity to the bullet
             egg.GetComponent<Rigidbody>().velocity = egg.transform.forward * 6;
             Destroy(_activateTarget);
+            lineRenderer.enabled = false;
             // Destroy the bullet after 2 seconds
             Destroy(egg, 5.0f);
         }

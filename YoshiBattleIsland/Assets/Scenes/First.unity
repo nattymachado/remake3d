@@ -354,7 +354,7 @@ MonoBehaviour:
   timeToChangeDirection: -2
   positionTarget: {x: 0, y: 0, z: 0}
   IsDizzy: 0
-  isBowser: 0
+  isBowser: 1
 --- !u!65 &154052869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1654,12 +1654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 1462384050}
-  egg: {fileID: 0}
-  timeToChangeDirection: -2
-  positionTarget: {x: 0, y: 0, z: 0}
-  IsDizzy: 0
-  isBowser: 0
 --- !u!65 &609528397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3736,12 +3730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 541421836}
-  egg: {fileID: 0}
-  timeToChangeDirection: -2
-  positionTarget: {x: 0, y: 0, z: 0}
-  IsDizzy: 0
-  isBowser: 0
 --- !u!65 &1071389868
 BoxCollider:
   m_ObjectHideFlags: 0

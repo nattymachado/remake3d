@@ -284,6 +284,106 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300126, guid: 0d39d36beeb2f9943a1cb4725bf6c45d, type: 3}
+--- !u!1 &154052865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1444014824123392, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501756680}
+  - component: {fileID: 154052870}
+  - component: {fileID: 154052869}
+  - component: {fileID: 154052868}
+  - component: {fileID: 154052867}
+  - component: {fileID: 154052866}
+  m_Layer: 11
+  m_Name: Bowser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &154052866
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 95910848482905774, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154052865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a96c399206fce1c4d931814208ca57f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &154052867
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 135233784844461602, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154052865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &154052868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114329952945586170, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154052865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 0}
+  egg: {fileID: 0}
+  timeToChangeDirection: -2
+  positionTarget: {x: 0, y: 0, z: 0}
+  IsDizzy: 0
+  isBowser: 0
+--- !u!65 &154052869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 65128881544270648, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154052865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.727417, y: 2.7809494, z: 2.0848389}
+  m_Center: {x: 0.009613037, y: 1.2461599, z: -0.09780884}
+--- !u!54 &154052870
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 54348640330804380, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154052865}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +450,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &172605721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1286088519908324, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172605722}
+  - component: {fileID: 172605724}
+  - component: {fileID: 172605723}
+  m_Layer: 11
+  m_Name: hayho_body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &172605722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4664797075542938, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 172605721}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1501756680}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &172605723
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 23583280765637728, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 172605721}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: a8a2e80fcb265ea4e8ed60a8d010b212, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &172605724
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 33526321063359642, guid: f0a1564babdaebe4abe71f7512751322,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 172605721}
+  m_Mesh: {fileID: 4300000, guid: a8a2e80fcb265ea4e8ed60a8d010b212, type: 3}
 --- !u!1 &184394356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100318, guid: 0d39d36beeb2f9943a1cb4725bf6c45d,
@@ -1413,6 +1589,7 @@ GameObject:
   - component: {fileID: 609528396}
   - component: {fileID: 609528395}
   - component: {fileID: 609528394}
+  - component: {fileID: 609528399}
   m_Layer: 11
   m_Name: ShyGuy7
   m_TagString: Untagged
@@ -1512,6 +1689,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 1
+--- !u!114 &609528399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 609528392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 1462384050}
+  egg: {fileID: 0}
+  timeToChangeDirection: -2
+  positionTarget: {x: 0, y: 0, z: 0}
+  IsDizzy: 0
+  isBowser: 0
 --- !u!1 &633653567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100486, guid: 0d39d36beeb2f9943a1cb4725bf6c45d,
@@ -3014,9 +3208,9 @@ GameObject:
   - component: {fileID: 953860819}
   - component: {fileID: 953860824}
   - component: {fileID: 953860823}
-  - component: {fileID: 953860822}
   - component: {fileID: 953860821}
   - component: {fileID: 953860820}
+  - component: {fileID: 953860822}
   m_Layer: 11
   m_Name: ShyGuy5
   m_TagString: Untagged
@@ -3072,13 +3266,12 @@ SphereCollider:
 --- !u!114 &953860822
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114531354709202706, guid: a3e3f8260e3e9b542923c196b3cb152b,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 953860818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 970799435}
@@ -3478,6 +3671,7 @@ GameObject:
   - component: {fileID: 1071389867}
   - component: {fileID: 1071389866}
   - component: {fileID: 1071389865}
+  - component: {fileID: 1071389870}
   m_Layer: 11
   m_Name: ShyGuy6
   m_TagString: Untagged
@@ -3577,6 +3771,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 1
+--- !u!114 &1071389870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1071389863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 541421836}
+  egg: {fileID: 0}
+  timeToChangeDirection: -2
+  positionTarget: {x: 0, y: 0, z: 0}
+  IsDizzy: 0
+  isBowser: 0
 --- !u!1 &1107733756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100044, guid: 0d39d36beeb2f9943a1cb4725bf6c45d,
@@ -3985,9 +4196,9 @@ GameObject:
   - component: {fileID: 1377820823}
   - component: {fileID: 1377820828}
   - component: {fileID: 1377820827}
-  - component: {fileID: 1377820826}
   - component: {fileID: 1377820825}
   - component: {fileID: 1377820824}
+  - component: {fileID: 1377820826}
   m_Layer: 11
   m_Name: ShyGuy3
   m_TagString: Untagged
@@ -4043,13 +4254,12 @@ SphereCollider:
 --- !u!114 &1377820826
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114531354709202706, guid: a3e3f8260e3e9b542923c196b3cb152b,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1377820822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 1019050369}
@@ -4255,7 +4465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460935525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 73649524}
@@ -4561,11 +4771,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1491828492}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1501756680 stripped
+--- !u!4 &1501756680
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322,
     type: 2}
-  m_PrefabInternal: {fileID: 1682826452}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154052865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -314.3, y: -123.5, z: -28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 172605722}
+  m_Father: {fileID: 2080149325}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1518344688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100484, guid: 0d39d36beeb2f9943a1cb4725bf6c45d,
@@ -4823,58 +5043,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1659706664}
   m_CullTransparentMesh: 0
---- !u!1001 &1682826452
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2080149325}
-    m_Modifications:
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -314.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -123.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054395800954154, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 54348640330804380, guid: f0a1564babdaebe4abe71f7512751322,
-        type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54348640330804380, guid: f0a1564babdaebe4abe71f7512751322,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f0a1564babdaebe4abe71f7512751322, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1696915032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,9 +5391,9 @@ GameObject:
   - component: {fileID: 1828323893}
   - component: {fileID: 1828323898}
   - component: {fileID: 1828323897}
-  - component: {fileID: 1828323896}
   - component: {fileID: 1828323895}
   - component: {fileID: 1828323894}
+  - component: {fileID: 1828323896}
   m_Layer: 11
   m_Name: ShyGuy4
   m_TagString: Untagged
@@ -5281,13 +5449,12 @@ SphereCollider:
 --- !u!114 &1828323896
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114531354709202706, guid: a3e3f8260e3e9b542923c196b3cb152b,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1828323892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 857475540}
@@ -5905,9 +6072,9 @@ GameObject:
   - component: {fileID: 2122823531}
   - component: {fileID: 2122823530}
   - component: {fileID: 2122823529}
-  - component: {fileID: 2122823528}
   - component: {fileID: 2122823527}
   - component: {fileID: 2122823526}
+  - component: {fileID: 2122823528}
   m_Layer: 11
   m_Name: ShyGuy2
   m_TagString: Untagged
@@ -5948,13 +6115,12 @@ SphereCollider:
 --- !u!114 &2122823528
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114531354709202706, guid: a3e3f8260e3e9b542923c196b3cb152b,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2122823525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c187a8e1ac393e547a8ab280cd58fabe, type: 3}
+  m_Script: {fileID: 11500000, guid: 88fa6c57d51aeea47acacda85130283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2043591252}

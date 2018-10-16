@@ -40,7 +40,7 @@ public class NestBehaviour : MonoBehaviour {
 
     IEnumerator RestartScene()
     {
-        _winnerText.text = "You is the winner!!!!";
+        _winnerText.text = "You are the winner!!!!";
         _winnerText.enabled = true;
         _winnerImage.enabled = true;
         MainAudioSource.clip = winClip;

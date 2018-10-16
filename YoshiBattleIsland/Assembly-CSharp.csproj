@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraMoviment.cs" />
-    <Compile Include="Assets\Scripts\Enymies\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Mario\MarioBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\TougueController.cs" />
@@ -74,16 +74,16 @@
     <Compile Include="Assets\Scripts\YoshiMoviment.cs" />
     <None Include="Assets\Models\Yoshi\info.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/machadon/Documents/pos/codes/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/machadon/Documents/pos/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/machadon/Documents/pos/codes/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/machadon/Documents/pos/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/machadon/Documents/pos/codes/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/machadon/Documents/pos/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/machadon/Documents/pos/codes/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/machadon/Documents/pos/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

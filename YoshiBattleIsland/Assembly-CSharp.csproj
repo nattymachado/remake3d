@@ -63,8 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraMoviment.cs" />
-    <Compile Include="Assets\Scripts\Enymies\ShyGuyController.cs" />
-    <Compile Include="Assets\Scripts\Enymies\ShyGuyController_.cs" />
+    <Compile Include="Assets\Scripts\Enymies\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Mario\MarioBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\TougueController.cs" />

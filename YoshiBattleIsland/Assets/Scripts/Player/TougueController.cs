@@ -15,17 +15,19 @@ public class TougueController : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-       ShyGuyController controller = other.GetComponent<ShyGuyController>();
-       if (controller != null)
+       EnemyController controller = other.GetComponent<EnemyController>();
+       if (controller != null && (!controller.isBowser || controller.IsDizzy ))
         {
             Debug.Log(transform.localScale.z);
             if (transform.localScale.z > 0.1)
             {
                 _tougleAnimator.SetBool("IsWithEgg", true);
+                _tougleAnimator.SetBool("IsBig", controller.isBowser);
                 controller.TransformOnEgg();
+                transform.parent.parent.GetComponent<PlayerController>().AddEgg(controller.isBowser);
                 controller.gameObject.SetActive(false);
                 Destroy(controller.gameObject, 0.2f);
-                transform.parent.parent.GetComponent<PlayerController>().AddEgg();
+                
             }
         }
         
@@ -42,7 +44,7 @@ public class TougueController : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetButton("Fire1") && !_isFiring)
+        if (Input.GetButton("Fire1") && !_isFiring  && !transform.parent.parent.GetComponent<PlayerController>().IsWithMario && !transform.parent.parent.GetComponent<PlayerController>().IsDizzy)
         {
             _isFiring = true;
             _tougleAnimator.SetTrigger("MovimentTougle");

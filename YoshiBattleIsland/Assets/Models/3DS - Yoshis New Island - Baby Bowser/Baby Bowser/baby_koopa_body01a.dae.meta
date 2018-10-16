@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: a8a2e80fcb265ea4e8ed60a8d010b212
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ankle_l
+    100002: ankle_r
+    100004: arm_l1
+    100006: arm_l2
+    100008: arm_r1
+    100010: arm_r2
+    100012: //RootNode
+    100014: baby_koopa_body01a
+    100016: baby_koopa_body01a_skeleton
+    100018: blow_l
+    100020: blow_r
+    100022: eyeblow_l
+    100024: eyeblow_r
+    100026: hair1
+    100028: hand_l
+    100030: hand_r
+    100032: head
+    100034: hip
+    100036: horn
+    100038: jow
+    100040: jow1
+    100042: koura2
+    100044: leg_l1
+    100046: leg_l2
+    100048: leg_r1
+    100050: leg_r2
+    100052: loc_fire
+    100054: neck
+    100056: nose
+    100058: nose1
+    100060: ring_l
+    100062: ring_r
+    100064: root
+    100066: shoulder_l
+    100068: shoulder_r
+    100070: skl_root
+    100072: tail1
+    100074: wrist_l
+    100076: wrist_r
+    400000: ankle_l
+    400002: ankle_r
+    400004: arm_l1
+    400006: arm_l2
+    400008: arm_r1
+    400010: arm_r2
+    400012: //RootNode
+    400014: baby_koopa_body01a
+    400016: baby_koopa_body01a_skeleton
+    400018: blow_l
+    400020: blow_r
+    400022: eyeblow_l
+    400024: eyeblow_r
+    400026: hair1
+    400028: hand_l
+    400030: hand_r
+    400032: head
+    400034: hip
+    400036: horn
+    400038: jow
+    400040: jow1
+    400042: koura2
+    400044: leg_l1
+    400046: leg_l2
+    400048: leg_r1
+    400050: leg_r2
+    400052: loc_fire
+    400054: neck
+    400056: nose
+    400058: nose1
+    400060: ring_l
+    400062: ring_r
+    400064: root
+    400066: shoulder_l
+    400068: shoulder_r
+    400070: skl_root
+    400072: tail1
+    400074: wrist_l
+    400076: wrist_r
+    2100000: assets_textures_baby_koopa_body01a
+    2100002: assets_textures_baby_koopa_eye01a
+    4300000: baby_koopa_body01a
+    9500000: //RootNode
+    13700000: baby_koopa_body01a
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.15
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

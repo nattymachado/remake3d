@@ -5,51 +5,71 @@ using UnityEngine;
 public class TougueController : MonoBehaviour {
 
     private Animator _tougleAnimator;
+    public GameObject EggPrefab;
+    public GameObject BigEggPrefab;
     private bool _isFiring = false;
+    private bool _isDetroyed = false;
+    private bool _isWithEgg = false;
+    public Transform EggSpawn;
+    public Scenario scenarioScript;
 
     public void Start()
     {
-        _tougleAnimator = transform.GetComponent<Animator>();
+        StartCoroutine(WaitToDestroy());
+        scenarioScript = Camera.main.GetComponent<Scenario>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
-       EnemyController controller = other.GetComponent<EnemyController>();
-       if (controller != null && (!controller.isBowser || controller.IsDizzy ))
+       if (!other.isTrigger)
         {
-            Debug.Log(transform.localScale.z);
-            if (transform.localScale.z > 0.1)
+            EnemyNavController controller = other.GetComponent<EnemyNavController>();
+            if (controller != null && (!controller.isBowser || controller.IsDizzy))
             {
-                _tougleAnimator.SetBool("IsWithEgg", true);
-                _tougleAnimator.SetBool("IsBig", controller.isBowser);
+
                 controller.TransformOnEgg();
-                transform.parent.parent.GetComponent<PlayerController>().AddEgg(controller.isBowser);
-                controller.gameObject.SetActive(false);
-                Destroy(controller.gameObject, 0.2f);
+                Destroy(controller.gameObject);
                 
+                GameObject egg = null;
+                if (controller.isBowser)
+                {
+                    egg = (GameObject)Instantiate(
+                         this.BigEggPrefab,
+                         this.EggSpawn.position,
+                         this.EggSpawn.rotation);
+                } else
+                {
+                    egg = (GameObject)Instantiate(
+                         this.EggPrefab,
+                         this.EggSpawn.position,
+                         this.EggSpawn.rotation);
+                    scenarioScript.SpawnShayGuy();
+                }
+                
+                egg.transform.parent = transform.parent;
+                this._isDetroyed = true;
+                this._isWithEgg = true;
+                Destroy(transform.parent.gameObject, 0.2f);
+
             }
         }
+       
         
     }
 
-    IEnumerator WaitForAnimation(float time)
+    IEnumerator WaitToDestroy()
     {
-        //print(Time.time);
-        yield return new WaitForSeconds(time);
-        _tougleAnimator.SetBool("IsWithEgg", false);
-        _isFiring = false;
- 
+        yield return new WaitForSeconds(0.5f);
+        if (!this._isDetroyed && !this._isWithEgg)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+        
+       
     }
 
     private void Update()
     {
-        if (Input.GetButton("Fire1") && !_isFiring  && !transform.parent.parent.GetComponent<PlayerController>().IsWithMario && !transform.parent.parent.GetComponent<PlayerController>().IsDizzy)
-        {
-            _isFiring = true;
-            _tougleAnimator.SetTrigger("MovimentTougle");
-            StartCoroutine(WaitForAnimation(1f));
-        }
     }
 
 }

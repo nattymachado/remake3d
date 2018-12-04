@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Scenario : MonoBehaviour {
+public class Scenario : MonoBehaviour  {
 
     public GameObject rock;
     public GameObject yoshi;
     public GameObject babyMario;
+    public GameObject shayGuy;
+    public int shayGuyNumber;
     public AudioSource MainAudioSource;
     public AudioClip loseClip;
     public List<GameObject> PlayerSpawnPoints;
     public List<GameObject> MarioSpawnPoints;
+    public List<GameObject> ShayGuySpawnPoints;
+    public GameObject Toad;
     public int MaxSeconds = 1;
     private float _totalTime;
     private Text _winnerText;
@@ -23,10 +27,18 @@ public class Scenario : MonoBehaviour {
     // Use this for initialization
     void Awake () {
 
-        SpawnPlayers();
-
         SpawnMario();
 
+        /*for (int i =0; i < shayGuyNumber; i++)
+        {
+            SpawnShayGuy();
+        }*/
+    }
+
+    public void SpawnShayGuy()
+    {
+        int spawnPosition = Random.Range(0, this.ShayGuySpawnPoints.Count);
+        GameObject shayGuyInstance = Instantiate(shayGuy, this.ShayGuySpawnPoints[spawnPosition].transform.position, Quaternion.identity);
     }
 
     private void Start()
@@ -43,7 +55,8 @@ public class Scenario : MonoBehaviour {
         GameObject nest = this.PlayerSpawnPoints[Random.Range(0, this.PlayerSpawnPoints.Count)];
         Debug.Log(nest);
         Debug.Log(nest.transform.position);
-        GameObject newYoshi = Instantiate(yoshi, nest.transform.position + new Vector3(0,1,0), Quaternion.identity);
+        GameObject newYoshi = Instantiate(yoshi, nest.transform.position + new Vector3(0,1.2f,0), Quaternion.identity);
+        newYoshi.GetComponentInChildren<PlayerController>().ToadScript = Toad.GetComponent<ToadController>();
         nest.GetComponent<NestBehaviour>().Owner = newYoshi.GetInstanceID();
     }
 
@@ -51,8 +64,8 @@ public class Scenario : MonoBehaviour {
     {
         int spawnPosition = Random.Range(0, this.MarioSpawnPoints.Count);
         GameObject babyMarioInstance =  Instantiate(babyMario, this.MarioSpawnPoints[spawnPosition].transform.position, Quaternion.identity);
-        MarioBehaviour marioBehaviour = babyMarioInstance.GetComponent<MarioBehaviour>();
-        marioBehaviour.origin = this.MarioSpawnPoints[spawnPosition];
+        //MarioBehaviour marioBehaviour = babyMarioInstance.GetComponent<MarioBehaviour>();
+       // marioBehaviour.origin = this.MarioSpawnPoints[spawnPosition];
     }
 
     IEnumerator RestartScene()

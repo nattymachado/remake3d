@@ -1,0 +1,3 @@
+url = https://iot.eprintsw.com/get-weixin-code-v1.html?appid=wxc8db065610cfa2b1&redirect_uri=https://oauth-test-app.dev.cd.id.hpcwp.com/redirect.html&response_type=code&scope=snsapi_login&state=123
+app id = wxc8db065610cfa2b1
+app secret = 6458ed550b16c32ed08e245085ae3f5d

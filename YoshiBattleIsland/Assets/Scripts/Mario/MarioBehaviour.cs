@@ -43,6 +43,7 @@ public class MarioBehaviour : MonoBehaviour {
                     _agent.enabled = false;
                     playerController.IsWithMario = true;
                     playerController.MarioInstance = transform.gameObject;
+                    playerController.ShowToadMessageWhenFindMario();
                     transform.position = new Vector3(hitColliders[i].transform.position.x, hitColliders[i].transform.position.y + 1f, hitColliders[i].transform.position.z - 1f);
                     transform.rotation = Quaternion.identity;
                     transform.GetComponent<BoxCollider>().enabled = false;
@@ -74,17 +75,6 @@ public class MarioBehaviour : MonoBehaviour {
         {
             _agent.destination = origin.transform.position;
         }
-        
-       
-       /* Vector3 direction = (origin.transform.position - transform.position).normalized;
-        transform.rotation = Quaternion.identity;
-        transform.position = new Vector3(transform.position.x, 5f, transform.position.z);
-        Debug.Log("Movendo: " + direction);
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.MovePosition(transform.position + direction * 5.0f * Time.deltaTime);
-        Quaternion lookToOrigin = Quaternion.LookRotation(direction);
-        GetComponent<Rigidbody>().MoveRotation(lookToOrigin);
-       */
 
     }
 

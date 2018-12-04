@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: 53abb41f2b22df94bb2ebcef20d21dde
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: baby_mario_body0
+    100002: //RootNode
+    100004: baby_mario_eye0
+    100006: baby_mario_mouth0
+    100008: baby_mario_body01a_root
+    400000: baby_mario_body0
+    400002: //RootNode
+    400004: baby_mario_eye0
+    400006: baby_mario_mouth0
+    400008: baby_mario_body01a_root
+    2100000: baby_mario_body0
+    2100002: baby_mario_eye0
+    2100004: baby_mario_mouth0
+    2300000: baby_mario_body0
+    2300002: baby_mario_eye0
+    2300004: baby_mario_mouth0
+    3300000: baby_mario_body0
+    3300002: baby_mario_eye0
+    3300004: baby_mario_mouth0
+    4300000: baby_mario_body0
+    4300002: baby_mario_eye0
+    4300004: baby_mario_mouth0
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
+      does not match:\n\tTransform 'skl_root' for human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: ShyGuy_High_ColladaMax(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root
+      parentName: ShyGuy_High_ColladaMax(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: kosi_jnt
+      parentName: root
+      position: {x: -0, y: 1.3999999, z: 0}
+      rotation: {x: 0.49999994, y: 0.49999994, z: 0.49999994, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eff_hip
+      parentName: kosi_jnt
+      position: {x: -0.288548, y: -1.3718199, z: 0}
+      rotation: {x: -0.50000006, y: -0.5, z: -0.49999988, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_momo_jnt
+      parentName: kosi_jnt
+      position: {x: 0.0690799, y: 0.29407048, z: -0.61992}
+      rotation: {x: -0.0000019942809, y: 0.000013575218, z: 0.006412466, w: 0.99997944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_asi_jnt
+      parentName: L_momo_jnt
+      position: {x: -0.67998403, y: 0, z: 0}
+      rotation: {x: 0.000009673006, y: -0.000009673006, z: -0.5690004, w: 0.82233727}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_sk_jnt
+      parentName: kosi_jnt
+      position: {x: -0, y: 0, z: -0.61992}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_momo_jnt
+      parentName: kosi_jnt
+      position: {x: 0.06909599, y: -0.59759456, z: 0.61992}
+      rotation: {x: 0, y: 0, z: 0.0064124614, w: 0.99997944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_asi_jnt
+      parentName: R_momo_jnt
+      position: {x: -0.680016, y: 0, z: 0.0000001}
+      rotation: {x: -0, y: 0, z: -0.5689947, w: 0.82234126}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_sk_jnt
+      parentName: kosi_jnt
+      position: {x: -0, y: 0, z: 0.61992}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mune_jnt
+      parentName: root
+      position: {x: -0, y: 1.3999999, z: 0}
+      rotation: {x: 0.49999994, y: -0.49999994, z: -0.49999994, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: kubi_jnt
+      parentName: mune_jnt
+      position: {x: -1.16416, y: -0.0072559994, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eff_head
+      parentName: kubi_jnt
+      position: {x: -2.23584, y: 0.0072559994, z: 0}
+      rotation: {x: -0.50000006, y: 0.5, z: 0.49999988, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fusa_jnt
+      parentName: kubi_jnt
+      position: {x: -1.32816, y: -0.982216, z: 0}
+      rotation: {x: 0, y: 0, z: 0.69641584, w: 0.71763843}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_kata_jnt
+      parentName: mune_jnt
+      position: {x: -1, y: -0.031000001, z: 0.739}
+      rotation: {x: -0.20424516, y: 0.37552142, z: 0.75690013, w: 0.49433774}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_ude_jnt
+      parentName: L_kata_jnt
+      position: {x: -0.48000002, y: 0, z: 0}
+      rotation: {x: 0.7005304, y: 0.060699146, z: 0.11063011, w: 0.7023772}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_hiji_jnt
+      parentName: L_ude_jnt
+      position: {x: -0.52, y: 0, z: -0.0000001}
+      rotation: {x: 0, y: -0, z: -0.06975334, w: 0.99756426}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_kata_jnt
+      parentName: mune_jnt
+      position: {x: -1.0100001, y: -0.031000001, z: -0.739}
+      rotation: {x: 0.48400548, y: -0.7076131, z: 0.47014344, w: 0.2097323}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_ude_jnt
+      parentName: R_kata_jnt
+      position: {x: -0.48000002, y: 0.0000005, z: 0}
+      rotation: {x: -0.7005258, y: -0.06072858, z: 0.11060721, w: 0.7023829}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_hiji_jnt
+      parentName: R_ude_jnt
+      position: {x: -0.52, y: 0, z: 0}
+      rotation: {x: -0, y: 0, z: -0.06967952, w: 0.99756944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: trans
+      parentName: root
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ShyGuy
+      parentName: ShyGuy_High_ColladaMax(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5f82a28cc38ed2e478c27fb9191aebbb,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

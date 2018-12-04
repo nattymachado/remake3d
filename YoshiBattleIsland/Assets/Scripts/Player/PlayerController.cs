@@ -2,49 +2,102 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : NetworkBehaviour {
 
     public float Speed;
     public float SpeedRotation;
     public float JumpSpeed;
+    public int TargetDistance = 100;
+    private Animator _animator;
+    private Rigidbody _rb;
+    private bool _isGrounded=true;
+    public ToadController ToadScript;
+    private LobbyManager _lobbyManager;
     public Text EggText;
     public GameObject EggPrefab;
     public GameObject BigEggPrefab;
+    public GameObject TouguePrefab;
     public GameObject TargetPrefab;
     public Transform EggSpawn;
+    public Transform TougueSpawnRight;
+    public Transform TougueSpawnLeft;
+    public Transform TougueSpawnCenter;
     public Camera playerCamera;
+    public GameObject playerCameraObj;
     public float collisionTime = 0;
-    private int targetDistance = 5;
-    private LineRenderer lineRenderer;
     public int BigEggPosition = 0;
     private bool _isDizzy = false;
-    public GameObject dizzyBols;
-    private Animator _animator;
-
-    private GameObject _activateTarget = null;
-
-
+    public GameObject dizzyStars;
     private bool _isWithMario = false;
     private GameObject _marioInstance = null;
-    private int eggsQuantity = 0;
+    private int _eggsQuantity = 50;
+    private bool _isJumping=false;
+    private float _distToGround;
+
+    public float speed = 6.0f;
+    public float jumpSpeed = 8.0f;
+    public float gravity = 20.0f;
+
+    private Vector3 _moveDirection = Vector3.zero;
+    private CharacterController _controller;
 
 
-
-    IEnumerator ControllDizzyState()
+    public void BeDizzy()
     {
-        this.dizzyBols.SetActive(true);
-        this._animator.enabled = true;
-        this._animator.SetBool("IsDizzy", true);
+        StartCoroutine(ControllDizzyState());
+    }
+
+    private IEnumerator ControllDizzyState()
+    {
+        this._animator.SetTrigger("Dizzy");
+        this._animator.SetBool("IsStopped", true);
         this._isDizzy = true;
-        yield return new WaitForSeconds(15);
-        this._animator.SetBool("IsDizzy", false);
+        yield return new WaitForSeconds(1);
+        this._animator.ResetTrigger("Dizzy");
+        
+        this._isGrounded = true;
+        this._isJumping = false;
         this._isDizzy = false;
-        this._animator.enabled = false;
-        this.dizzyBols.SetActive(false);
+        
+        
 
     }
 
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.GetComponent<EnemyController>() != null)
+        {
+            this._rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+        }
+        
+
+        Debug.Log(col.gameObject.name);
+        if (this.IsGrounded())
+        {
+            Debug.Log(col.gameObject.name);
+            this._isJumping = false;
+            this._rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+
+    }
+
+    private bool IsGrounded()
+    {
+
+        _distToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
+        return Physics.Raycast(transform.position, - Vector3.up, _distToGround + 0.20f);
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        
+        if (col.gameObject.GetComponent<EnemyController>() != null)
+        {
+            this._rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
 
     public bool IsWithMario
     {
@@ -80,208 +133,216 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void AddEgg(bool isBig)
+    IEnumerator Jump()
     {
-        this.eggsQuantity += 1;
-        EggText.text = "x " + this.eggsQuantity;
-        
-        if (isBig)
-        {
-            Debug.Log("Is Bowser");
-            this.BigEggPosition = this.eggsQuantity;
-        }
+        print(Time.time);
+        yield return new WaitForSeconds(0.1f);
+        this._rb.constraints = RigidbodyConstraints.FreezeRotation;
+        this._animator.SetBool("IsJumping", false);
+        this._rb.AddForce(Vector3.up * JumpSpeed, ForceMode.Impulse);
     }
 
-    public void RemoveEgg()
+    public void Start()
     {
-        this.eggsQuantity -= 1;
-        EggText.text = "x " + this.eggsQuantity;
-        Debug.Log("Eggs: " + this.eggsQuantity);
-    }
-
-    private Quaternion currentRotation;
-
-
-    void Start()
-    {
-        EggText = GameObject.FindGameObjectWithTag("EggQuantityText").GetComponent<Text>();
-        EggText.text = "x " + this.eggsQuantity;
-        lineRenderer = transform.GetComponent<LineRenderer>();
-        InvokeRepeating("RefreshTargetDistance", 0f, 2f);
         this._animator = GetComponent<Animator>();
-        this.dizzyBols.SetActive(false);
-    }
+        this._rb = GetComponent<Rigidbody>();
+        this._lobbyManager = LobbyManager.singleton.GetComponent<LobbyManager>();
+        _lobbyManager.PlayersOnArena = _lobbyManager.PlayersOnArena + 1;
+        EggText = GameObject.FindGameObjectWithTag("EggQuantityText").GetComponent<Text>();
+        EggText.text = "x " + this._eggsQuantity;
 
-    public void BeDizzy()
-    {
-        StartCoroutine(ControllDizzyState());
-    }
-
-    void DrawTargetLine(Vector3 targetPosition)
-    {
-        lineRenderer.enabled = true;
-        lineRenderer.materials[0].mainTextureScale = new Vector3(2, 1, 1);
-        lineRenderer.SetPosition(0, new Vector3(transform.position.x, transform.position.y, transform.position.z));
-        lineRenderer.SetPosition(1, new Vector3(targetPosition.x, targetPosition.y, targetPosition.z));
-    }
-
-    void UpdateTargetPosition(int distance)
-    {
-        var mousePos = Input.mousePosition;
-        mousePos.z = 20.0f;
-        if (mousePos.y < 116f)
+        if (isLocalPlayer)
         {
-            mousePos.y = 116f;
+            playerCameraObj.SetActive(true);
         }
-        Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
-        DrawTargetLine(objectPos);
-        Vector3 direction = (objectPos - transform.position).normalized;
-        _activateTarget.transform.position = transform.position + direction * distance;
     }
 
+    void CheckHeadPosition()
+    {
+
+        Vector3 objectPos = this.GetMousePosition();
+
+        if (objectPos.x < (Screen.width / 2 - 50f))
+        {
+            _animator.SetInteger("HeadPosition", 1);
+        }
+        else if (objectPos.x > (Screen.width / 2 + 50f))
+        {
+            _animator.SetInteger("HeadPosition", 2);
+        } else
+        {
+
+            _animator.SetInteger("HeadPosition", 0);
+        }
+    }
 
     void Update()
     {
 
-       
-    }
 
-    // Fixed update is used for physics
-    void FixedUpdate()
-    {
-        bool hitSomething = false;
-
-
-
-
-       /* if (lineRenderer)
+        /*if ((_lobbyManager.PlayersOnArena + 1) != _lobbyManager.matchSize)
         {
-            RaycastHit hitInfo;
+            return;
+        }*/
 
-            if (_activateTarget)
+        if (!isLocalPlayer || dizzyStars.activeSelf)
+        {
+            return;
+        }
+
+        Animator anime = this.GetComponent<Animator>();
+        if (!dizzyStars.activeSelf)
+        {
+            float x = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedRotation;
+            float z = Input.GetAxis("Vertical") * Time.deltaTime * Speed;
+            float y = 0;
+
+            if (Input.GetButtonDown("Jump") && this.IsGrounded())
             {
-                if (Physics.Linecast(transform.position, _activateTarget.transform.position, out hitInfo))
-                {
+                this._isJumping = true;
+                this._animator.SetBool("IsJumping", true);
+                StartCoroutine(Jump());
+                return;
+            }
 
-                    if (hitInfo.collider.gameObject.GetComponent<EnemyController>() != null)
-                    {
-                        this.targetDistance -= 1;
-                        Debug.Log("Pagou um shygay");
-                    }
-                    hitSomething = true;
+            if ((x != 0 || z != 0))
+            {
+                
+                this._animator.SetBool("IsStopped", false);
 
-
-                }
-
-
-                if (hitSomething)
-                {
-                    Debug.Log("Tá pegando");
-                }
+            }
+            else
+            {
+                
+                this._animator.SetBool("IsStopped", true);
                 
             }
 
-        }*/
-
-        if (!this._isDizzy)
-        {
-            var x = Input.GetAxis("Horizontal") * Time.deltaTime * SpeedRotation;
-            var z = Input.GetAxis("Vertical") * Time.deltaTime * Speed;
-            float y = 0;
-
-
-            if (transform.position.y < JumpSpeed && !IsWithMario)
-            {
-                if (Input.GetButtonDown("Jump"))
-                {
-                    Debug.Log("Jumping");
-                    y = JumpSpeed;
-                }
-            }
-
-
+            
             transform.Rotate(0, x, 0);
             transform.Translate(0, y, z);
+            this.CheckHeadPosition();
 
-            
-
-            if (_activateTarget)
+            if (Input.GetButtonUp("Fire2") && !this.IsWithMario)
             {
-                UpdateTargetPosition(this.targetDistance);
+                if (this._eggsQuantity > 0)
+                {
+                    //this.RemoveEgg();
+                    this.Fire();
+                }
             }
 
-            if (Input.GetButtonDown("Fire2") && !IsWithMario)
+            if (Input.GetButtonUp("Fire1") && !this.IsWithMario)
             {
-                if (_activateTarget == null)
-                {
-                    this.targetDistance = 5;
-                    var mousePos = Input.mousePosition;
-                    mousePos.z = 20.0f;
-                    Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
-                    Vector3 direction = (objectPos - transform.position).normalized;
-                    DrawTargetLine(objectPos);
-                    _activateTarget = (GameObject)Instantiate(
-                        this.TargetPrefab,
-                        transform.position + direction * 5, transform.rotation);
-                }
-
-            }
-            if (Input.GetButtonUp("Fire2") && !IsWithMario)
-            {
-
-                if (eggsQuantity > 0)
-                {
-                    this.RemoveEgg();
-                    Fire();
-                }
-                else
-                {
-                    Destroy(_activateTarget);
-                    lineRenderer.enabled = false;
-                }
+                RpcTougueFire();
             }
         }
+        
     }
 
-    private void RefreshTargetDistance()
+    //Run on Client
+    [ClientRpc]
+    public void RpcTougueFire()
     {
-        this.targetDistance = 5;
+        TougueFire();
+
+    }
+
+    //Run on Server
+    [Command]
+    public void CmdTougueFire()
+    {
+        RpcTougueFire();
     }
 
     private void Fire()
     {
-        if (_activateTarget)
+        GameObject egg;
+
+        if (this.BigEggPosition == this._eggsQuantity + 1)
         {
-            GameObject egg ;
-
-            if (this.BigEggPosition == this.eggsQuantity + 1)
-            {
-                egg = (GameObject)Instantiate(
-            this.BigEggPrefab,
-            this.EggSpawn.position,
-            this.EggSpawn.rotation);
+            egg = (GameObject)Instantiate(
+                this.BigEggPrefab,
+                this.EggSpawn.position,
+                this.EggSpawn.rotation);
                 egg.GetComponent<EggBehaviour>().IsBig = true;
-            } else
+            }
+            else
             {
                 egg = (GameObject)Instantiate(
-            this.EggPrefab,
-            this.EggSpawn.position,
-            this.EggSpawn.rotation);
+                    this.EggPrefab,
+                    this.EggSpawn.position,
+                    this.EggSpawn.rotation);
             }
-            egg.transform.LookAt(_activateTarget.transform.position);
-            egg.GetComponent<Rigidbody>().AddForce(egg.transform.forward * 1000);
-            // Add velocity to the bullet
-            egg.GetComponent<Rigidbody>().velocity = egg.transform.forward * 6;
 
-            Destroy(_activateTarget);
-            //lineRenderer.enabled = false;
-            // Destroy the bullet after 2 seconds
-            if (this.BigEggPosition != this.eggsQuantity) {
-                Destroy(egg, 5.0f);
-            }
-            
+            Vector3 direction = this.GetFireDirection();
+
+            egg.transform.LookAt(this.EggSpawn.position + direction * TargetDistance);
+            egg.GetComponent<Rigidbody>().AddForce(egg.transform.forward * 100);
+            egg.GetComponent<Rigidbody>().velocity = egg.transform.forward * 20;
+
+            Destroy(egg, 5.0f);
+    }
+
+        private void TougueFire()
+    {
+        _animator.SetBool("OpenMouth", true);
+        StartCoroutine(CloseMouth());
+        StartCoroutine(CreateTougue());
+
+    }
+
+    IEnumerator CreateTougue()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(0.1f);
+        int headPosition = _animator.GetInteger("HeadPosition");
+        Transform touguePosition = this.TougueSpawnCenter;
+        if (headPosition == 1)
+        {
+            touguePosition = this.TougueSpawnLeft;
         }
-        
+        else if (headPosition == 2)
+        {
+            touguePosition = this.TougueSpawnRight;
+        }
+        GameObject tougue = (GameObject)Instantiate(
+                  this.TouguePrefab,
+                  touguePosition.position,
+                  touguePosition.rotation);
+        tougue.transform.parent = transform;
+    }
+
+    IEnumerator CloseMouth()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(0.5f);
+        _animator.SetBool("OpenMouth", false);  
+    }
+
+    private Vector3 GetMousePosition()
+    {
+        var mousePos = Input.mousePosition;
+        mousePos.z = -300.0f;
+        mousePos.y = 400.0f;
+        return mousePos;
+    }
+
+    private Vector3 GetFireDirection()
+    {
+
+
+        Vector3 mousePos = this.GetMousePosition();
+
+        Vector3 objectPos = playerCamera.ScreenToWorldPoint(mousePos);
+        //Debug.Log(objectPos);
+        return  (EggSpawn.transform.position-objectPos).normalized;
+        //Debug.Log(direction);
+    }
+
+    public void ShowToadMessageWhenFindMario()
+    {
+        ToadScript.FindMario();
     }
 
 

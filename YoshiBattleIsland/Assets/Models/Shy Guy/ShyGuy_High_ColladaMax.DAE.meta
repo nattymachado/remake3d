@@ -1,0 +1,360 @@
+fileFormatVersion: 2
+guid: 5f82a28cc38ed2e478c27fb9191aebbb
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: eff_head
+    100002: eff_hip
+    100004: fusa_jnt
+    100006: kosi_jnt
+    100008: kubi_jnt
+    100010: L_asi_jnt
+    100012: L_hiji_jnt
+    100014: L_kata_jnt
+    100016: L_momo_jnt
+    100018: L_sk_jnt
+    100020: L_ude_jnt
+    100022: mune_jnt
+    100024: R_asi_jnt
+    100026: R_hiji_jnt
+    100028: R_kata_jnt
+    100030: R_momo_jnt
+    100032: R_sk_jnt
+    100034: R_ude_jnt
+    100036: root
+    100038: ShyGuy
+    100040: //RootNode
+    100042: trans
+    400000: eff_head
+    400002: eff_hip
+    400004: fusa_jnt
+    400006: kosi_jnt
+    400008: kubi_jnt
+    400010: L_asi_jnt
+    400012: L_hiji_jnt
+    400014: L_kata_jnt
+    400016: L_momo_jnt
+    400018: L_sk_jnt
+    400020: L_ude_jnt
+    400022: mune_jnt
+    400024: R_asi_jnt
+    400026: R_hiji_jnt
+    400028: R_kata_jnt
+    400030: R_momo_jnt
+    400032: R_sk_jnt
+    400034: R_ude_jnt
+    400036: root
+    400038: ShyGuy
+    400040: //RootNode
+    400042: trans
+    2100000: Material__208
+    4300000: ShyGuy
+    9500000: //RootNode
+    13700000: ShyGuy
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftFoot' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.07
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: root
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_momo_jnt
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_momo_jnt
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_asi_jnt
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_asi_jnt
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mune_jnt
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: kubi_jnt
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: fusa_jnt
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_kata_jnt
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_kata_jnt
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_ude_jnt
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_ude_jnt
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: L_hiji_jnt
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R_hiji_jnt
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: ShyGuy_High_ColladaMax(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root
+      parentName: ShyGuy_High_ColladaMax(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: kosi_jnt
+      parentName: root
+      position: {x: -0, y: 0.9799999, z: 0}
+      rotation: {x: 0.49999994, y: 0.49999994, z: 0.49999994, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eff_hip
+      parentName: kosi_jnt
+      position: {x: -0.20198359, y: -0.96027386, z: 0}
+      rotation: {x: -0.50000006, y: -0.5, z: -0.49999988, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_momo_jnt
+      parentName: kosi_jnt
+      position: {x: 0.04835593, y: 0.20584933, z: -0.43394402}
+      rotation: {x: -0.0000019942809, y: 0.000013575218, z: 0.006412466, w: 0.99997944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_asi_jnt
+      parentName: L_momo_jnt
+      position: {x: -0.4759888, y: 0, z: 0}
+      rotation: {x: 0.000009673006, y: -0.000009673006, z: -0.5690004, w: 0.82233727}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_sk_jnt
+      parentName: kosi_jnt
+      position: {x: -0, y: 0, z: -0.43394402}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_momo_jnt
+      parentName: kosi_jnt
+      position: {x: 0.048367195, y: -0.4183162, z: 0.43394402}
+      rotation: {x: 0, y: 0, z: 0.0064124614, w: 0.99997944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_asi_jnt
+      parentName: R_momo_jnt
+      position: {x: -0.4760112, y: 0, z: 0.00000007}
+      rotation: {x: -0, y: 0, z: -0.5689947, w: 0.82234126}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_sk_jnt
+      parentName: kosi_jnt
+      position: {x: -0, y: 0, z: 0.43394402}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mune_jnt
+      parentName: root
+      position: {x: -0, y: 0.9799999, z: 0}
+      rotation: {x: 0.49999994, y: -0.49999994, z: -0.49999994, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: kubi_jnt
+      parentName: mune_jnt
+      position: {x: -0.814912, y: -0.0050791996, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eff_head
+      parentName: kubi_jnt
+      position: {x: -1.565088, y: 0.0050791996, z: 0}
+      rotation: {x: -0.50000006, y: 0.5, z: 0.49999988, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fusa_jnt
+      parentName: kubi_jnt
+      position: {x: -0.929712, y: -0.6875512, z: 0}
+      rotation: {x: 0, y: 0, z: 0.69641584, w: 0.71763843}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_kata_jnt
+      parentName: mune_jnt
+      position: {x: -0.7, y: -0.0217, z: 0.5173}
+      rotation: {x: -0.20424516, y: 0.37552142, z: 0.75690013, w: 0.49433774}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_ude_jnt
+      parentName: L_kata_jnt
+      position: {x: -0.336, y: 0, z: 0}
+      rotation: {x: 0.7005304, y: 0.060699146, z: 0.11063011, w: 0.7023772}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_hiji_jnt
+      parentName: L_ude_jnt
+      position: {x: -0.364, y: 0, z: -0.00000007}
+      rotation: {x: 0, y: -0, z: -0.06975334, w: 0.99756426}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_kata_jnt
+      parentName: mune_jnt
+      position: {x: -0.7070001, y: -0.0217, z: -0.5173}
+      rotation: {x: 0.48400548, y: -0.7076131, z: 0.47014344, w: 0.2097323}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_ude_jnt
+      parentName: R_kata_jnt
+      position: {x: -0.336, y: 0.00000035, z: 0}
+      rotation: {x: -0.7005258, y: -0.06072858, z: 0.11060721, w: 0.7023829}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_hiji_jnt
+      parentName: R_ude_jnt
+      position: {x: -0.364, y: 0, z: 0}
+      rotation: {x: -0, y: 0, z: -0.06967952, w: 0.99756944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: trans
+      parentName: root
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ShyGuy
+      parentName: ShyGuy_High_ColladaMax(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

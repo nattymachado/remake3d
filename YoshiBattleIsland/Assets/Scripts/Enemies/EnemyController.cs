@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    public GameObject body;
-    public GameObject egg;
     private Vector3 target;
     private bool followPlayer;
     private GameObject yoshi;
@@ -16,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public bool IsDizzy = false;
     private float collisionTime = 0;
     public bool isBowser = false;
+    public Scenario scenarioScript;
     public void Start()
     {
         this._animator = GetComponent<Animator>();
@@ -59,7 +58,8 @@ public class EnemyController : MonoBehaviour
                 {
                     controller.MarioInstance.GetComponent<MarioBehaviour>().ReturnToOrigin();
                 }
-                controller.BeDizzy();
+
+                //controller.BeDizzy();
                 collisionTime = 0;
             }
 
@@ -160,4 +160,8 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("I will be an egg now");
     }
+
+    
+
+    
 }

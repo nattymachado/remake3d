@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c215a35695a09d849a4c7bf52227c103
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cabold Comic
+  fontNames:
+  - Cabold Comic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 35b574acc16c575449e33f76bcd83fb4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

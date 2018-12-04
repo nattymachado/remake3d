@@ -1,0 +1,435 @@
+fileFormatVersion: 2
+guid: fac86714cfafb41449c6e11afdfee40e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: bb_mario_polygon2
+    100002: body
+    100004: button_l
+    100006: button_r
+    100008: cap
+    100010: DolBabymario
+    100012: //RootNode
+    100014: eye_l
+    100016: eye_r
+    100018: face_normal
+    100020: hair
+    100022: hair1
+    100024: hair2
+    100026: hand_l
+    100028: hand_r
+    100030: leg_l
+    100032: leg_r
+    100034: mesh0000
+    100036: mesh0001
+    100038: mesh0002
+    100040: mesh0003
+    100042: mesh0004
+    100044: mesh0005
+    100046: mesh0006
+    100048: mesh0007
+    100050: mesh0008
+    100052: mesh0009
+    100054: mesh0010
+    100056: mesh0011
+    100058: mesh0012
+    100060: mesh0013
+    100062: mesh0014
+    100064: mesh0015
+    100066: mesh0016
+    100068: mesh0017
+    100070: mesh0018
+    100072: mesh0019
+    100074: mesh0020
+    100076: mesh0021
+    100078: mesh0022
+    100080: mesh0023
+    100082: mesh0024
+    100084: mesh0025
+    100086: mesh0026
+    100088: mesh0027
+    100090: mesh0028
+    100092: mesh0029
+    100094: mesh0030
+    100096: mesh0031
+    100098: mesh0032
+    100100: mesh0033
+    100102: mesh0034
+    100104: mesh0035
+    100106: mesh0036
+    100108: mesh0037
+    100110: pos00
+    100112: rotN
+    100114: tooth
+    100116: TopN
+    100118: transN
+    400000: bb_mario_polygon2
+    400002: body
+    400004: button_l
+    400006: button_r
+    400008: cap
+    400010: DolBabymario
+    400012: //RootNode
+    400014: eye_l
+    400016: eye_r
+    400018: face_normal
+    400020: hair
+    400022: hair1
+    400024: hair2
+    400026: hand_l
+    400028: hand_r
+    400030: leg_l
+    400032: leg_r
+    400034: mesh0000
+    400036: mesh0001
+    400038: mesh0002
+    400040: mesh0003
+    400042: mesh0004
+    400044: mesh0005
+    400046: mesh0006
+    400048: mesh0007
+    400050: mesh0008
+    400052: mesh0009
+    400054: mesh0010
+    400056: mesh0011
+    400058: mesh0012
+    400060: mesh0013
+    400062: mesh0014
+    400064: mesh0015
+    400066: mesh0016
+    400068: mesh0017
+    400070: mesh0018
+    400072: mesh0019
+    400074: mesh0020
+    400076: mesh0021
+    400078: mesh0022
+    400080: mesh0023
+    400082: mesh0024
+    400084: mesh0025
+    400086: mesh0026
+    400088: mesh0027
+    400090: mesh0028
+    400092: mesh0029
+    400094: mesh0030
+    400096: mesh0031
+    400098: mesh0032
+    400100: mesh0033
+    400102: mesh0034
+    400104: mesh0035
+    400106: mesh0036
+    400108: mesh0037
+    400110: pos00
+    400112: rotN
+    400114: tooth
+    400116: TopN
+    400118: transN
+    2100000: bb_mario_shirt_front
+    2100002: bb_mario_shirt_neck
+    2100004: bb_mario_neck
+    2100006: bb_mario_shirt_back
+    2100008: bb_mario_arm_1
+    2100010: bb_mario_arm_2
+    2100012: bb_mario_zubon_1
+    2100014: bb_mario_suspender
+    2100016: bb_mario_zubon_2
+    2100018: bb_mario_button
+    2100020: bb_mario_cap_2
+    2100022: bb_mario_mark
+    2100024: bb_mario_cap_3
+    2100026: bb_mario_cap_1
+    2100028: bb_mario_cap_inside
+    2100030: bb_mario_eye_0
+    2100032: bb_mario_skin
+    2100034: bb_mario_ear
+    2100036: bb_mario_mouth
+    2100038: bb_mario_brow
+    2100040: bb_mario_momikage_1
+    2100042: bb_mario_nape
+    2100044: bb_mario_nose
+    2100046: bb_mario_hair_back
+    2100048: bb_mario_hair_front_1
+    2100050: bb_mario_hair_test
+    2100052: bb_mario_hair_front_2
+    2100054: bb_mario_hair_top
+    2100056: bb_mario_wrist
+    2100058: bb_mario_hand
+    2100060: bb_mario_sole_1
+    2100062: bb_mario_shoe_2
+    2100064: bb_mario_shoe_1
+    2100066: bb_mario_sock
+    2100068: bb_mario_leg
+    2100070: bb_mario_sole_2
+    2100072: bb_mario_shoe_3
+    2100074: bb_mario_tooth
+    4300000: mesh0000
+    4300002: mesh0001
+    4300004: mesh0002
+    4300006: mesh0003
+    4300008: mesh0004
+    4300010: mesh0005
+    4300012: mesh0006
+    4300014: mesh0007
+    4300016: mesh0008
+    4300018: mesh0009
+    4300020: mesh0010
+    4300022: mesh0011
+    4300024: mesh0012
+    4300026: mesh0013
+    4300028: mesh0014
+    4300030: mesh0015
+    4300032: mesh0016
+    4300034: mesh0017
+    4300036: mesh0018
+    4300038: mesh0019
+    4300040: mesh0020
+    4300042: mesh0021
+    4300044: mesh0022
+    4300046: mesh0023
+    4300048: mesh0024
+    4300050: mesh0025
+    4300052: mesh0026
+    4300054: mesh0027
+    4300056: mesh0028
+    4300058: mesh0029
+    4300060: mesh0030
+    4300062: mesh0031
+    4300064: mesh0032
+    4300066: mesh0033
+    4300068: mesh0034
+    4300070: mesh0035
+    4300072: mesh0036
+    4300074: mesh0037
+    9500000: //RootNode
+    13700000: mesh0000
+    13700002: mesh0001
+    13700004: mesh0002
+    13700006: mesh0003
+    13700008: mesh0004
+    13700010: mesh0005
+    13700012: mesh0006
+    13700014: mesh0007
+    13700016: mesh0008
+    13700018: mesh0009
+    13700020: mesh0010
+    13700022: mesh0011
+    13700024: mesh0012
+    13700026: mesh0013
+    13700028: mesh0014
+    13700030: mesh0015
+    13700032: mesh0016
+    13700034: mesh0017
+    13700036: mesh0018
+    13700038: mesh0019
+    13700040: mesh0020
+    13700042: mesh0021
+    13700044: mesh0022
+    13700046: mesh0023
+    13700048: mesh0024
+    13700050: mesh0025
+    13700052: mesh0026
+    13700054: mesh0027
+    13700056: mesh0028
+    13700058: mesh0029
+    13700060: mesh0030
+    13700062: mesh0031
+    13700064: mesh0032
+    13700066: mesh0033
+    13700068: mesh0034
+    13700070: mesh0035
+    13700072: mesh0036
+    13700074: mesh0037
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: ShyGuy_High_ColladaMax(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root
+      parentName: ShyGuy_High_ColladaMax(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: kosi_jnt
+      parentName: root
+      position: {x: -0, y: 1.3999999, z: 0}
+      rotation: {x: 0.49999994, y: 0.49999994, z: 0.49999994, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eff_hip
+      parentName: kosi_jnt
+      position: {x: -0.288548, y: -1.3718199, z: 0}
+      rotation: {x: -0.50000006, y: -0.5, z: -0.49999988, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_momo_jnt
+      parentName: kosi_jnt
+      position: {x: 0.0690799, y: 0.29407048, z: -0.61992}
+      rotation: {x: -0.0000019942809, y: 0.000013575218, z: 0.006412466, w: 0.99997944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_asi_jnt
+      parentName: L_momo_jnt
+      position: {x: -0.67998403, y: 0, z: 0}
+      rotation: {x: 0.000009673006, y: -0.000009673006, z: -0.5690004, w: 0.82233727}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_sk_jnt
+      parentName: kosi_jnt
+      position: {x: -0, y: 0, z: -0.61992}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_momo_jnt
+      parentName: kosi_jnt
+      position: {x: 0.06909599, y: -0.59759456, z: 0.61992}
+      rotation: {x: 0, y: 0, z: 0.0064124614, w: 0.99997944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_asi_jnt
+      parentName: R_momo_jnt
+      position: {x: -0.680016, y: 0, z: 0.0000001}
+      rotation: {x: -0, y: 0, z: -0.5689947, w: 0.82234126}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_sk_jnt
+      parentName: kosi_jnt
+      position: {x: -0, y: 0, z: 0.61992}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mune_jnt
+      parentName: root
+      position: {x: -0, y: 1.3999999, z: 0}
+      rotation: {x: 0.49999994, y: -0.49999994, z: -0.49999994, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: kubi_jnt
+      parentName: mune_jnt
+      position: {x: -1.16416, y: -0.0072559994, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eff_head
+      parentName: kubi_jnt
+      position: {x: -2.23584, y: 0.0072559994, z: 0}
+      rotation: {x: -0.50000006, y: 0.5, z: 0.49999988, w: 0.5000002}
+      scale: {x: 1, y: 1, z: 1}
+    - name: fusa_jnt
+      parentName: kubi_jnt
+      position: {x: -1.32816, y: -0.982216, z: 0}
+      rotation: {x: 0, y: 0, z: 0.69641584, w: 0.71763843}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_kata_jnt
+      parentName: mune_jnt
+      position: {x: -1, y: -0.031000001, z: 0.739}
+      rotation: {x: -0.20424516, y: 0.37552142, z: 0.75690013, w: 0.49433774}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_ude_jnt
+      parentName: L_kata_jnt
+      position: {x: -0.48000002, y: 0, z: 0}
+      rotation: {x: 0.7005304, y: 0.060699146, z: 0.11063011, w: 0.7023772}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_hiji_jnt
+      parentName: L_ude_jnt
+      position: {x: -0.52, y: 0, z: -0.0000001}
+      rotation: {x: 0, y: -0, z: -0.06975334, w: 0.99756426}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_kata_jnt
+      parentName: mune_jnt
+      position: {x: -1.0100001, y: -0.031000001, z: -0.739}
+      rotation: {x: 0.48400548, y: -0.7076131, z: 0.47014344, w: 0.2097323}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_ude_jnt
+      parentName: R_kata_jnt
+      position: {x: -0.48000002, y: 0.0000005, z: 0}
+      rotation: {x: -0.7005258, y: -0.06072858, z: 0.11060721, w: 0.7023829}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_hiji_jnt
+      parentName: R_ude_jnt
+      position: {x: -0.52, y: 0, z: 0}
+      rotation: {x: -0, y: 0, z: -0.06967952, w: 0.99756944}
+      scale: {x: 1, y: 1, z: 1}
+    - name: trans
+      parentName: root
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ShyGuy
+      parentName: ShyGuy_High_ColladaMax(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5f82a28cc38ed2e478c27fb9191aebbb,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

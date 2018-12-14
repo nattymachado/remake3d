@@ -52,16 +52,8 @@ public class NestBehaviour : NetworkBehaviour {
         _isEnded = true;
         _scenario.GameEnded = true;
         MainAudioSource = Camera.main.GetComponent<AudioSource>();
-        if (isLocal)
-        {
-            _toad.EndGameWithAWinner(winner);
-            MainAudioSource.clip = winClip;
-        } else
-        {
-            _toad.EndGameWithAWinnerButNotYou(winner);
-            MainAudioSource.clip = loseClip;
-        }
-
+        MainAudioSource.clip = winClip;
+        _toad.EndGameWithAWinnerButNotYou(winner);
         MainAudioSource.Play();
         yield return new WaitForSeconds(5);
         StartCoroutine(_manager.ShutDownNetwork());

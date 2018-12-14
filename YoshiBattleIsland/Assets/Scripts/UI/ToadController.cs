@@ -21,7 +21,7 @@ public class ToadController : MonoBehaviour {
 
     public void InitGame()
     {
-        toadTalk.text = "Hi "+_manager.UserName+" .. run and find Baby Mario. He is crying ...";
+        toadTalk.text = "Hi  "+_manager.UserName+"  ...  Baby  Mario  is  crying, find  him!";
         ToadAndBaloon.SetActive(true);
         StartCoroutine(HideToad());
     }
@@ -35,21 +35,21 @@ public class ToadController : MonoBehaviour {
 
     public void EndGameWithAWinnerButNotYou(string winner)
     {
-        toadTalk.text = "And the winner is:   " + winner + "   ! Mario is saved!!!";
+        toadTalk.text = "And  the  winner  is:  " + winner + " ! Mario  is  safe !!!";
         ToadAndBaloon.SetActive(true);
         StartCoroutine(HideToad());
     }
 
     public void EndGameTimeout()
     {
-        toadTalk.text = "Ohhh! The time is out. Nobody saved Baby Mario!";
+        toadTalk.text = "Ohhh !  The  time  is  out.  Nobody  saved  Baby  Mario !";
         ToadAndBaloon.SetActive(true);
         StartCoroutine(HideToad());
     }
 
     public void FindMario()
     {
-        toadTalk.text = "You  found  Baby  Mario ... Return  to  your nest and win the game! Run, run ... ";
+        toadTalk.text = "You  found  Baby  Mario ... Return  to  your  nest  to  win  the  game!  Run,  run ... ";
         ToadAndBaloon.SetActive(true);
         StartCoroutine(HideToad());
         _findMario = true;
@@ -57,7 +57,7 @@ public class ToadController : MonoBehaviour {
 
     public void SomeoneFoundMario()
     {
-        toadTalk.text = "Someone  found  Baby  Mario ... Run, run ... ";
+        toadTalk.text = "Someone  found  Baby  Mario, try  to  steal  him ...  Run, run ... ";
         ToadAndBaloon.SetActive(true);
         StartCoroutine(HideToad());
         _findMario = true;
@@ -71,7 +71,7 @@ public class ToadController : MonoBehaviour {
             switch (mPosition)
             {
                 case 0:
-                    position = "shrubs.";
+                    position = "bushes.";
                     break;
                 case 1:
                     position = "pines.";
@@ -85,7 +85,7 @@ public class ToadController : MonoBehaviour {
             }
 
 
-            toadTalk.text = "Ohh! Time is passing, run to save Mario. He is in " + position;
+            toadTalk.text = "Ohh! Time is passing, run to save Mario. He is in the " + position;
             ToadAndBaloon.SetActive(true);
             StartCoroutine(HideToad());
 

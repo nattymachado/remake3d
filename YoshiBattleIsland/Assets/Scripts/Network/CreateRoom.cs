@@ -23,11 +23,24 @@ public class CreateRoom : MonoBehaviour {
         hostButton.interactable = false;
         LobbyRoot.SetActive(true);
         lobbyManager.StartMatchMaker();
-        int players = PlayerNumber.value + 2;
-        Debug.Log(players);
-        Debug.Log(MatchNameInput.text);
-        lobbyManager.matchMaker.CreateMatch(MatchNameInput.text, (uint)players, true, "", "", "", 0, 0, lobbyManager.OnMatchCreate);
-        lobbyManager.minPlayers = players - 1;
+        int players = PlayerNumber.value + 1;
+        bool matchAdvertise = true;
+        if (PlayerNumber.value == 0)
+        {
+            players = 2;
+            matchAdvertise = false;
+            
+        }
+        lobbyManager.matchMaker.CreateMatch(MatchNameInput.text, (uint)players, matchAdvertise, "", "", "", 0, 0, lobbyManager.OnMatchCreate);
+        if (PlayerNumber.value == 0)
+        {
+            lobbyManager.minPlayers = players - 1;
+
+        } else
+        {
+            lobbyManager.minPlayers = players;
+        }
+        
 
 
     }

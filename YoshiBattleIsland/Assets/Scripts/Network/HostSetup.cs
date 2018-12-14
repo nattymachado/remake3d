@@ -28,17 +28,55 @@ public class HostSetup : MonoBehaviour {
 
     public void Join()
     {
+
+        
         if (_lobbyManager == null)
         {
             _lobbyManager = LobbyManager.singleton.GetComponent<LobbyManager>();
         }
 
-        _lobbyRoot.SetActive(true);
-        Transform[] items = _lobbyRoot.GetComponentsInChildren<Transform> (true);
+        _lobbyManager.matchMaker.ListMatches(0, 1, Match.name, true, 0, 0, OnMatchList);
 
-        foreach (Transform item in items) {
-            item.gameObject.SetActive(true);
+        
+    }
+
+    private void OnMatchList(bool sucess, string extendedInfo, List<UnityEngine.Networking.Match.MatchInfoSnapshot> matchList)
+    {
+        if (!sucess)
+        {
+            Debug.Log("Problems to check the information of the match");
         }
-        _lobbyManager.matchMaker.JoinMatch(Match.networkId, "", "", "", 0, 0, _lobbyManager.OnMatchJoined);
+        else
+        {
+            if (matchList.Count != 1)
+            {
+                Debug.Log("Problems to check the information of the match");
+            } else
+            {
+                Debug.Log("Current Size:" + matchList[0].currentSize);
+                Debug.Log("Max size:" + matchList[0].maxSize);
+                if (matchList[0].currentSize < (matchList[0].maxSize))
+                {
+                    Debug.Log("Join ...");
+                    _lobbyRoot.SetActive(true);
+                    Transform[] items = _lobbyRoot.GetComponentsInChildren<Transform>(true);
+
+                    foreach (Transform item in items)
+                    {
+                        item.gameObject.SetActive(true);
+                    }
+                    _lobbyManager.matchMaker.JoinMatch(Match.networkId, "", "", "", 0, 0, _lobbyManager.OnMatchJoined);
+                } else
+                {
+                    Debug.Log("A sala já esta cheia");
+                }
+            }
+        }
+
+    }
+
+    private void GoToLobby()
+    {
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LobbyManager : NetworkLobbyManager {
 
@@ -14,6 +15,9 @@ public class LobbyManager : NetworkLobbyManager {
     public GameObject yoshiRedPrefab;
     public GameObject yoshiPinkPrefab;
     public GameObject yoshiYellowPrefab;
+    public GameObject yoshiPurplePrefab;
+    public GameObject yoshiGrayPrefab;
+    public GameObject yoshiBabyBluePrefab;
     public GameObject lobbyPlayerPref;
     public int PlayersOnArena = 0;
     public string UserName;
@@ -31,8 +35,7 @@ public class LobbyManager : NetworkLobbyManager {
 
     public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
     {
-        Debug.Log("Creating new player");
-        Debug.Log(lobbyPlayer.GetComponent<LobbyPlayer>().name);
+        gamePlayer.GetComponent<PlayerController2>().PlayerNameTextMesh.GetComponent<TextMeshPro>().text = lobbyPlayer.GetComponent<LobbyPlayer>().UserInput.text;
         return base.OnLobbyServerSceneLoadedForPlayer(lobbyPlayer, gamePlayer);
     }
 
@@ -69,6 +72,95 @@ public class LobbyManager : NetworkLobbyManager {
       
     }
 
+    public override void OnStopServer()
+    {
+        base.OnStopServer();
+        Debug.Log("Stopping server");
+        Destroy(LobbyManager.singleton.gameObject);
+        SceneManager.LoadScene("LobbyScene");
+
+        
+    }
+
+    public override void OnStopHost()
+    {
+        base.OnStopHost();
+        Debug.Log("Stopping host");
+        Destroy(LobbyManager.singleton.gameObject);
+        SceneManager.LoadScene("LobbyScene");
+        
+    }
+
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        Debug.Log("Stopping client");
+        Destroy(LobbyManager.singleton.gameObject);
+        SceneManager.LoadScene("LobbyScene");
+    }
+
+    public override void OnLobbyClientDisconnect(NetworkConnection conn)
+    {
+        Debug.Log("Client disconnect");
+        SceneManager.LoadScene("LobbyScene");
+    }
+
+    public override void OnLobbyServerDisconnect(NetworkConnection conn)
+    {
+        Debug.Log("Server disconnect");
+        StartCoroutine(ShutDownNetwork());
+    }
+
+    public IEnumerator ShutDownNetwork()
+    {
+
+        if (!NetworkServer.active)
+        {
+            Debug.Log("StopClient");
+            LobbyManager.singleton.StopClient();
+        }
+        else
+        {
+            Debug.Log("Waiting connections");
+            while (CheckConnections() > 1)
+                yield return null;
+
+            Debug.Log("StopHost");
+            LobbyManager.singleton.StopHost();
+            LobbyManager.singleton.StopServer();
+            NetworkServer.DisconnectAll();
+        }
+        
+        
+       /// StartCoroutine(ExitDelay());
+    }
+
+    /*IEnumerator ExitDelay()
+    {
+        yield return new WaitForSeconds(0.1f);//attends un peu
+        Destroy(LobbyManager.singleton.gameObject);
+
+        //yield return new WaitForSeconds(0.1f);//attends un peu
+
+        //SceneManager.LoadScene("LobbyScene"); // SCENE SUIVANTE
+
+    }*/
+
+    private int CheckConnections()
+    {
+        int connectionsCount = 0;
+        foreach (NetworkConnection conn in NetworkServer.connections)
+        {
+            Debug.Log("Testing connections:" + conn);
+            if (conn != null)
+            {
+                connectionsCount += 1;
+            }
+        }
+        Debug.Log("Active Connections:" + connectionsCount);
+        return connectionsCount;
+    }
+
     public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
     {
         GameObject ParentPref = LobbyManager.singleton.GetComponent<LobbyManager>().LobbyPlayers;
@@ -101,7 +193,7 @@ public class LobbyManager : NetworkLobbyManager {
                 yoshiPrefab = yoshiRedPrefab;
                 playerPrefab = yoshiRedPrefab;
                 break;
-            case "blue":
+            case "dark blue":
                 yoshiPrefab = yoshiBluePrefab;
                 playerPrefab = yoshiBluePrefab;
                 break;
@@ -113,16 +205,25 @@ public class LobbyManager : NetworkLobbyManager {
                 yoshiPrefab = yoshiPinkPrefab;
                 playerPrefab = yoshiPinkPrefab;
                 break;
+            case "grey":
+                yoshiPrefab = yoshiGrayPrefab;
+                playerPrefab = yoshiGrayPrefab;
+                break;
+            case "purple":
+                yoshiPrefab = yoshiPurplePrefab;
+                playerPrefab = yoshiPurplePrefab;
+                break;
+            case "baby blue":
+                yoshiPrefab = yoshiBabyBluePrefab;
+                playerPrefab = yoshiBabyBluePrefab;
+                break;
             default:
                 yoshiPrefab = yoshiGreenPrefab;
                 break;
         }
-
-        //yoshiPrefab.GetComponent<PlayerController2>().playerName = lobbyPlayer.UserInput.text;
         GameObject player = Instantiate(yoshiPrefab, nest.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
-        Debug.Log("player Name:" + lobbyPlayer.UserInput.text);
-        player.GetComponent<PlayerController2>().playerName = lobbyPlayer.UserInput.text;
-        nest.GetComponent<NestBehaviour>().Owner = player.GetInstanceID();
+       
+        player.GetComponent<PlayerController2>().NestPosition = nest.transform.position;
         return player;
     }
 

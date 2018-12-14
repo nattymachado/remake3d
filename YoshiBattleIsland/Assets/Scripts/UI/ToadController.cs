@@ -9,28 +9,88 @@ public class ToadController : MonoBehaviour {
     public Text toadTalk;
     public GameObject ToadAndBaloon;
     private LobbyManager _manager;
+    private bool _findMario = false;
+    public int MarioPosition;
+    
 
     // Use this for initialization
     void Start () {
         _manager = LobbyManager.singleton.GetComponent<LobbyManager>();
         InitGame();
-        
-
     }
-
 
     public void InitGame()
     {
-        toadTalk.text = "Olá "+_manager.UserName+" .. corra e encontre o Mario. Preste atenção ele esta chorando ...";
+        toadTalk.text = "Hi "+_manager.UserName+" .. run and find Baby Mario. He is crying ...";
+        ToadAndBaloon.SetActive(true);
+        StartCoroutine(HideToad());
+    }
+
+    public void EndGameWithAWinner(string winner)
+    {
+        toadTalk.text = "And the winner is:   " + winner + "   ! Mario is saved!!!";
+        ToadAndBaloon.SetActive(true);
+        StartCoroutine(HideToad());
+    }
+
+    public void EndGameWithAWinnerButNotYou(string winner)
+    {
+        toadTalk.text = "And the winner is:   " + winner + "   ! Mario is saved!!!";
+        ToadAndBaloon.SetActive(true);
+        StartCoroutine(HideToad());
+    }
+
+    public void EndGameTimeout()
+    {
+        toadTalk.text = "Ohhh! The time is out. Nobody saved Baby Mario!";
         ToadAndBaloon.SetActive(true);
         StartCoroutine(HideToad());
     }
 
     public void FindMario()
     {
-        toadTalk.text = "Você achou o Mario .. Volte para o seu ninho para ganhar o jogo! Corra ... ";
+        toadTalk.text = "You  found  Baby  Mario ... Return  to  your nest and win the game! Run, run ... ";
         ToadAndBaloon.SetActive(true);
         StartCoroutine(HideToad());
+        _findMario = true;
+    }
+
+    public void SomeoneFoundMario()
+    {
+        toadTalk.text = "Someone  found  Baby  Mario ... Run, run ... ";
+        ToadAndBaloon.SetActive(true);
+        StartCoroutine(HideToad());
+        _findMario = true;
+    }
+
+    public void MarioPositionIs(int mPosition)
+    {
+        if (!_findMario)
+        {
+            string position = "";
+            switch (mPosition)
+            {
+                case 0:
+                    position = "shrubs.";
+                    break;
+                case 1:
+                    position = "pines.";
+                    break;
+                case 2:
+                    position = "flowers.";
+                    break;
+                case 3:
+                    position = "trees.";
+                    break;
+            }
+
+
+            toadTalk.text = "Ohh! Time is passing, run to save Mario. He is in " + position;
+            ToadAndBaloon.SetActive(true);
+            StartCoroutine(HideToad());
+
+        }
+       
     }
 
     IEnumerator HideToad()
@@ -38,9 +98,4 @@ public class ToadController : MonoBehaviour {
         yield return new WaitForSeconds(5f);
         ToadAndBaloon.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

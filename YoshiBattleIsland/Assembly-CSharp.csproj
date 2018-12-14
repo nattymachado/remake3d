@@ -62,17 +62,50 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\CameraMoviment.cs" />
-    <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\CameraController2.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyNavNetworkController.cs" />
     <Compile Include="Assets\Scripts\Mario\MarioBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Network\CreateRoom.cs" />
+    <Compile Include="Assets\Scripts\Network\HostSetup.cs" />
+    <Compile Include="Assets\Scripts\Network\JoinRoom.cs" />
+    <Compile Include="Assets\Scripts\Network\LobbyManager.cs" />
+    <Compile Include="Assets\Scripts\Network\LobbyPlayer.cs" />
+    <Compile Include="Assets\Scripts\Network\LobbyServer.cs" />
+    <Compile Include="Assets\Scripts\Network\NetworkSpawner.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController2.cs" />
     <Compile Include="Assets\Scripts\Player\TougueController.cs" />
     <Compile Include="Assets\Scripts\Scenario.cs" />
     <Compile Include="Assets\Scripts\Scenario\EggBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Scenario\MagicEggBehaviour.cs" />
     <Compile Include="Assets\Scripts\Scenario\NestBehaviour.cs" />
-    <Compile Include="Assets\Scripts\UI.cs" />
-    <Compile Include="Assets\Scripts\YoshiMoviment.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\StartMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\ToadController.cs" />
+    <Compile Include="Assets\Scripts\UI\VideoPlayerScript.cs" />
+    <None Include="Assets\Models\BabyMario2\info.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Models\Shy Guy\Tag.txt" />
+    <None Include="Assets\Shaders\Waves.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Models\Wii - Super Smash Bros Brawl - Baby Mario Trophy\Credits.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\Models\Yoshi\info.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Models\Wii - Mario Kart Wii - Baby Mario\Credits.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/machadon/Documents/pos/remake3d/YoshiBattleIsland/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

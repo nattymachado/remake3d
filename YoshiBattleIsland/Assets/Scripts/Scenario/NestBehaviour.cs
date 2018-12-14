@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 
-public class NestBehaviour : MonoBehaviour {
+public class NestBehaviour : NetworkBehaviour {
 
     private int ownerInstanceId;
-    private bool _isOwnerAlreadyExit = false;
     private Text _winnerText;
     private Image _winnerImage;
     private GameObject _winnerPanel;
     public AudioSource MainAudioSource;
     public AudioClip winClip;
+    public AudioClip loseClip;
     private bool _isEnded = false;
+    private LobbyManager _manager;
+    private ToadController _toad;
+    private Scenario _scenario;
+    public Camera PlayerCamera;
 
     public void Start()
     {
@@ -23,6 +28,10 @@ public class NestBehaviour : MonoBehaviour {
         _winnerImage = _winnerPanel.GetComponentInChildren<Image>();
         _winnerText.enabled = false;
         _winnerImage.enabled = false;
+        _manager = LobbyManager.singleton.GetComponent<LobbyManager>();
+        _scenario = Camera.main.GetComponent<Scenario>();
+        _toad = _scenario.Toad.GetComponent<ToadController>();
+        PlayerCamera = Camera.main;
     }
 
     public int Owner
@@ -38,41 +47,74 @@ public class NestBehaviour : MonoBehaviour {
         }
     }
 
-    IEnumerator RestartScene()
+    IEnumerator RestartScene(string winner, bool isLocal)
     {
-        _winnerText.text = "You are the winner!!!!";
-        _winnerText.enabled = true;
-        _winnerImage.enabled = true;
-        MainAudioSource.clip = winClip;
+        _isEnded = true;
+        _scenario.GameEnded = true;
+        MainAudioSource = Camera.main.GetComponent<AudioSource>();
+        if (isLocal)
+        {
+            _toad.EndGameWithAWinner(winner);
+            MainAudioSource.clip = winClip;
+        } else
+        {
+            _toad.EndGameWithAWinnerButNotYou(winner);
+            MainAudioSource.clip = loseClip;
+        }
+
         MainAudioSource.Play();
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(_manager.ShutDownNetwork());
+
+    }
+
+    //Run on Client
+    [ClientRpc]
+    public void RpcRestart(string winner, bool isLocal)
+    {
+       StartCoroutine(RestartScene(winner, isLocal));
+    }
+
+    //Run on Server
+    [Command]
+    public void CmdRestart(string winner, bool isLocal)
+    {
+        RpcRestart(winner, isLocal);
+    }
+
+
+    //Run on Client
+    [ClientRpc]
+    public void RpcMoveCamera(NetworkInstanceId winner)
+    {
+        MoveCamera(winner);
+    }
+
+    //Run on Server
+    [Command]
+    public void CmdMoveCamera(NetworkInstanceId winner)
+    {
+        RpcMoveCamera(winner);
+    }
+
+    private void MoveCamera(NetworkInstanceId winner)
+    {
+        CameraController2 cameraController = PlayerCamera.GetComponent<CameraController2>();
+        cameraController.LookAtTarget(ClientScene.FindLocalObject(winner));
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Winner 1");
-        if (other.transform.parent && other.transform.parent.gameObject.GetInstanceID() == this.ownerInstanceId && _isOwnerAlreadyExit)
+        PlayerController2 playerController = other.GetComponent<PlayerController2>();
+       
+
+        if (playerController != null && playerController.IsWithMario && !_isEnded && (playerController.NestPosition.x == transform.position.x) && (playerController.NestPosition.z == transform.position.z))
         {
-            Debug.Log("Winner 2");
-            if (other.gameObject.GetComponent<PlayerController>() != null && other.gameObject.GetComponent<PlayerController>().IsWithMario && !_isEnded)
-            {
-                Debug.Log("Winner 3");
-                _winnerText.enabled = true;
-                _winnerImage.enabled = true;
-                _isEnded = true;
-                StartCoroutine(RestartScene());
-            }
+             _isEnded = true;
+            CmdMoveCamera(playerController.netId);
+             CmdRestart(playerController.playerName, playerController.isLocalPlayer);
             
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.transform && other.transform.parent && other.transform.parent.gameObject.GetInstanceID() == this.ownerInstanceId)
-        {
-            _isOwnerAlreadyExit = true;
         }
     }
 

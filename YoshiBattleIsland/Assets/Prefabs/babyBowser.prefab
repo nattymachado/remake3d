@@ -141,12 +141,12 @@ GameObject:
   - component: {fileID: 4395123562247488}
   - component: {fileID: 95641383019059734}
   - component: {fileID: 195233025722903442}
-  - component: {fileID: 54759198736580900}
   - component: {fileID: 135925915232160678}
   - component: {fileID: 136752081407523304}
   - component: {fileID: 114065954707904020}
   - component: {fileID: 114695170851016476}
   - component: {fileID: 114198938114223486}
+  - component: {fileID: 136743267823892678}
   m_Layer: 11
   m_Name: babyBowser
   m_TagString: Untagged
@@ -1155,21 +1155,6 @@ Transform:
   m_Father: {fileID: 4112983472272210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54759198736580900
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1180379586978546}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!95 &95641383019059734
 Animator:
   serializedVersion: 3
@@ -1203,6 +1188,16 @@ MonoBehaviour:
   positionTarget: {x: 0, y: 0, z: 0}
   IsDizzy: 0
   isBowser: 1
+  GoPoints:
+  - {fileID: 1930981887087724, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1104645381668320, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1719231055350670, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1372556217998450, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1015671777786332, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1999398035013678, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1180709379228182, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1410989123031256, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
+  - {fileID: 1764169731920468, guid: 7286a7e0f0e0e0946a9b32d51f054f33, type: 2}
 --- !u!114 &114198938114223486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1215,8 +1210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.033333335
-  m_SyncRotationAxis: 7
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 2
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
@@ -1267,7 +1262,20 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
-  m_Center: {x: 0, y: 1.8, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136743267823892678
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180379586978546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.8220956
+  m_Height: 6.62
+  m_Direction: 1
+  m_Center: {x: -0.0625515, y: 0, z: 0}
 --- !u!136 &136752081407523304
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1277,10 +1285,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.0281271
-  m_Height: 2.9741292
+  m_Radius: 1.3426911
+  m_Height: 3.9640255
   m_Direction: 1
-  m_Center: {x: 0.042274714, y: 0.050980806, z: -0.14765227}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137921315776624560
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1373,8 +1381,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1180379586978546}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.02
-  m_Speed: 3.5
+  m_Radius: 1.5
+  m_Speed: 3.3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1382,7 +1390,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2.44
-  m_BaseOffset: 1.2
+  m_Height: 4
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

@@ -15,9 +15,9 @@ public class EnemyNavNetworkController : NetworkBehaviour
     private Animator _animator;
     public bool IsDizzy = false;
     private bool _isWaitingToGo = false;
-    private float collisionTime = 0;
     public bool isBowser = false;
     private NavMeshAgent _agent;
+    public List<GameObject> GoPoints;
 
     public void Start()
     {
@@ -27,8 +27,8 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     private Vector3 ChangeDirection()
     {
-        Debug.Log("Changing direction");
-        Vector3 position = new Vector3(Random.Range(0, 100f), 0, Random.Range(0, 100f));
+        int positionInt = Random.Range(0, this.GoPoints.Count);
+        Vector3 position = this.GoPoints[positionInt].transform.position;
         return position;
     }
 
@@ -51,46 +51,7 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (!isServer)
-        {
-            return;
-        }
-        PlayerController controller = collision.gameObject.GetComponent<PlayerController>();
-        if (controller != null && !controller.IsDizzy)
-        {
-            collisionTime += Time.deltaTime;
-            this._animator.SetBool("IsHitting", true);
-            if (collisionTime >= 0.1f)
-            {
-                Debug.Log("Perdeu o Mario!");
-                if (controller.MarioInstance!= null)
-                {
-                    controller.MarioInstance.GetComponent<MarioBehaviour>().ReturnToOrigin();
-                }
-
-                controller.BeDizzy();
-                collisionTime = 0;
-            }
-
-        }
-
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (!isServer)
-        {
-            return;
-        }
-        PlayerController controller = collision.gameObject.GetComponent<PlayerController>();
-        if (controller != null && this._animator.GetBool("IsHitting"))
-        {
-            this._animator.SetBool("IsHitting", false);
-
-        }
-    }
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -104,9 +65,28 @@ public class EnemyNavNetworkController : NetworkBehaviour
         {
             
             StartCoroutine(ControllDizzyState(eggScript.IsBig));
+            CmdDizzy(eggScript.IsBig);
 
         }
 
+    }
+
+    //Run on Client
+    [ClientRpc]
+    public void RpcDizzy(bool isBig)
+    {
+        if (!isServer)
+        {
+            StartCoroutine(ControllDizzyState(isBig));
+
+        }
+    }
+
+    //Run on Server
+    [Command]
+    public void CmdDizzy(bool isBig)
+    {
+        RpcDizzy(isBig);
     }
 
     void MoveToTarget(Vector3 position)
@@ -119,20 +99,20 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     void Update()
     {
-
         if (!isServer)
         {
+            _agent.enabled = false;
             return;
         }
  
         if (this.IsDizzy)
             return;
-
         timeToChangeDirection -= Time.deltaTime;
-        if (timeToChangeDirection <= 0)
+        if (this._agent.isStopped || (timeToChangeDirection <= 0))
         {
             positionTarget = ChangeDirection();
             timeToChangeDirection = 10;
+
         }
 
         if (yoshi != null && !this._isWaitingToGo)
@@ -148,12 +128,11 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     private void SetYoshiAsTarget()
     {
-        if (yoshi.GetComponent<PlayerController>().IsDizzy)
+        if (yoshi.GetComponent<PlayerController2>().IsDizzy)
         {
             positionTarget = Vector3.Reflect(yoshi.transform.position, Vector3.forward);
             yoshi = null;
             StartCoroutine(WaitingToBeReadyToGo());
-            timeToChangeDirection = 10;
         }
         else
         {
@@ -173,14 +152,9 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isServer)
-        {
-            return;
-        }
-        PlayerController controller = other.GetComponent<PlayerController>();
+        PlayerController2 controller = other.GetComponent<PlayerController2>();
         if (controller != null && (!controller.IsDizzy))
         {
-            Debug.Log("O yoshi entrou");
             yoshi = controller.gameObject;
 
         }
@@ -189,13 +163,9 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (!isServer)
-        {
-            return;
-        }
         if (yoshi == null)
         {
-            PlayerController controller = other.GetComponent<PlayerController>();
+            PlayerController2 controller = other.GetComponent<PlayerController2>();
             if (controller != null && (!controller.IsDizzy))
             {
                 yoshi = controller.gameObject;
@@ -207,12 +177,8 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!isServer)
-        {
-            return;
-        }
 
-        PlayerController controller = other.GetComponent<PlayerController>();
+        PlayerController2 controller = other.GetComponent<PlayerController2>();
         if (controller != null)
         {
             if (controller.gameObject == yoshi)
@@ -227,10 +193,6 @@ public class EnemyNavNetworkController : NetworkBehaviour
 
     public void TransformOnEgg()
     {
-        if (!isServer)
-        {
-            return;
-        }
-        Debug.Log("I will be an egg now");
+       // Debug.Log("I will be an egg now");
     }
 }

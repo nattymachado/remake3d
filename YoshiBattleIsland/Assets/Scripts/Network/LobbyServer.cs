@@ -15,9 +15,8 @@ public class LobbyServer : NetworkLobbyPlayer {
 
     public void OnServerStartGame()
     {
-        Debug.Log(_manager.numPlayers);
         _manager.minPlayers = _manager.numPlayers;
-        Debug.Log("Init Game");
+        Debug.Log("Starting Game");
     }
 }
     

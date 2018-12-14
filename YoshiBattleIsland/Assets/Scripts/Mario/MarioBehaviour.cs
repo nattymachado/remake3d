@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
-public class MarioBehaviour : MonoBehaviour {
+public class MarioBehaviour :NetworkBehaviour {
 
     public float radiusDetection = 1.0f;
     private bool isWithYoshi = false;
@@ -15,40 +15,46 @@ public class MarioBehaviour : MonoBehaviour {
     public Transform goal;
     private NavMeshAgent _agent;
 
-    private Vector3 _positionOnYoshi = new Vector3(10f, 10f, 10f);
-    private Quaternion _rotationOnYoshi = new Quaternion(-16.313f, -0.087f, 0.608f, 0);
-
     private void Start()
     {
         bubble.SetActive(true);
-        _audio = transform.GetComponent<AudioSource>();
+        _audio = GetComponent<AudioSource>();
         _audio.enabled = true;
         _agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(CryMario(5));
+    }
+
+    private IEnumerator CryMario(int timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        _audio.Play();
+        StartCoroutine(CryMario(5));
     }
 
     void Update()
     {
+
+        if (!isServer)
+        {
+            if (transform.parent)
+            {
+                UpdatePosition();
+            }
+            
+            return;
+        }
         if (!isWithYoshi)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radiusDetection);
             int i = 0;
             while (i < hitColliders.Length)
             {
-                PlayerController playerController = hitColliders[i].GetComponent<PlayerController>();
+                
+                PlayerController2 playerController = hitColliders[i].GetComponent<PlayerController2>();
                 if (playerController != null && !playerController.IsDizzy)
                 {
-                    transform.GetComponent<Rigidbody>().isKinematic = true;
-                    _audio.enabled = false;
-                    transform.parent = hitColliders[i].transform;
-                    _agent.enabled = false;
-                    playerController.IsWithMario = true;
-                    playerController.MarioInstance = transform.gameObject;
-                    playerController.ShowToadMessageWhenFindMario();
-                    transform.position = new Vector3(hitColliders[i].transform.position.x, hitColliders[i].transform.position.y + 1f, hitColliders[i].transform.position.z - 1f);
-                    transform.rotation = Quaternion.identity;
-                    transform.GetComponent<BoxCollider>().enabled = false;
-                    this.isWithYoshi = true;
-                    bubble.SetActive(false);
+                    Debug.Log("Achei alguma coisa!");
+                    CmdSetAttributes(playerController.netId);
                 }
 
                 i++;
@@ -56,18 +62,63 @@ public class MarioBehaviour : MonoBehaviour {
 
             if (!this.isWithYoshi)
             {
-                _audio.enabled = true;
+               
                 MoveToOrigin();
             }
+        } else
+        {
+            UpdatePosition();
         }
         
 
+    }
+
+    private void UpdatePosition()
+    {
+        PlayerController2 playerController = transform.parent.GetComponent<PlayerController2>();
+        transform.position = playerController.marioPoint.transform.position;
+        transform.rotation = playerController.transform.rotation;
+    }
+            
+    private void SetAttributesWithYoshi(NetworkInstanceId networkId)
+    {
+        
+
+        PlayerController2 playerController = ClientScene.FindLocalObject(networkId).GetComponent<PlayerController2>();
+
+        if (playerController.isLocalPlayer)
+        {
+            playerController.ShowToadMessageWhenFindMario();
+        }
+        else
+        {
+            playerController.ShowToadMessageSomeoneFoundMario();
+        }
+
+        transform.parent = playerController.transform;
+        transform.position = playerController.marioPoint.transform.position;
+        transform.rotation = playerController.transform.rotation;
+        this.isWithYoshi = true;
+        bubble.SetActive(false);
+        GetComponent<Rigidbody>().isKinematic = true;
+        playerController.IsWithMario = true;
+        playerController.MarioInstance = transform.gameObject;
+        GetComponent<BoxCollider>().enabled = false;
+       
+
+        if (!_audio)
+        {
+            _audio = GetComponent<AudioSource>();
+        }
+        _audio.enabled = false; 
+        
     }
 
 
     void MoveToOrigin()
     {
         bubble.SetActive(true);
+        CmdEnableBubble();
         _agent = GetComponent<NavMeshAgent>();
         transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
         _agent.enabled = true;
@@ -78,11 +129,63 @@ public class MarioBehaviour : MonoBehaviour {
 
     }
 
+    //Run on Server
+    [Command]
+    public void CmdEnableBubble()
+    {
+        RpcEnableBubble();
+    }
+
+    //Run on Client
+    [ClientRpc]
+    public void RpcEnableBubble()
+    {
+        bubble.SetActive(true);
+    }
+
+    //Run on Server
+    [Command]
+   public void CmdReturnToOrigin()
+   {
+      RpcReturnToOrigin();
+   }
+
+   //Run on Client
+   [ClientRpc]
+   public void RpcReturnToOrigin()
+   {
+     _return();
+   }
+
+    //Run on Server
+    [Command]
+    public void CmdSetAttributes(NetworkInstanceId networkId)
+    {
+        RpcSetAttributes(networkId);
+    }
+
+    //Run on Client
+    [ClientRpc]
+    public void RpcSetAttributes(NetworkInstanceId networkId)
+    {
+        SetAttributesWithYoshi(networkId);
+    }
+
     public void ReturnToOrigin()
+    {
+        if (!isServer)
+        {
+            return;
+        }
+        CmdReturnToOrigin();
+
+    }
+
+    private void _return()
     {
         if (transform.parent)
         {
-            PlayerController playerController = transform.parent.GetComponent<PlayerController>();
+            PlayerController2 playerController = transform.parent.GetComponent<PlayerController2>();
             if (playerController)
             {
                 transform.parent = null;
@@ -94,6 +197,5 @@ public class MarioBehaviour : MonoBehaviour {
 
             }
         }
-        
     }
 }

@@ -61,8 +61,14 @@ public class LobbyPlayer : NetworkLobbyPlayer {
                 return 2;
             case "red":
                 return 3;
-            case "blue":
+            case "dark blue":
                 return 4;
+            case "baby blue":
+                return 5;
+            case "grey":
+                return 6;
+            case "purple":
+                return 7;
             default:
                 return 0;
         }
